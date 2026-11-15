@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gemelo digital de Canarias</title>
+<meta name="description" content="Recorre las siete islas en 3D y viaja en el tiempo desde 1494 hasta hoy.">
+<script src="https://cdn.jsdelivr.net/npm/cesium@1.120.0/Build/Cesium/Cesium.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/cesium@1.120.0/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+<style>
+:root{--bg:#10231f;--ink:#f2ede0;--mute:#9db5ab;--lava:#e8552d;--sea:#2fa4a0;--line:#2c4a42}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);font-family:Georgia,'Times New Roman',serif;color:var(--ink)}
+#c{position:absolute;inset:0}
+#panel{position:absolute;top:12px;left:12px;width:330px;max-width:calc(100% - 24px);max-height:calc(100% - 24px);overflow:auto;background:rgba(16,35,31,.94);border-left:4px solid var(--lava);padding:16px 18px;z-index:5}
+#panel.min .body{display:none}
+h1{margin:0;font-size:22px;line-height:1.15}
+.top{display:flex;justify-content:space-between;align-items:start;gap:8px}
+p{margin:6px 0 10px;font-size:14px;line-height:1.5;color:var(--mute)}
+#era{font-size:28px;font-weight:700;color:var(--lava);margin:4px 0}
+.row{margin:12px 0}
+label,legend{display:block;font-size:13px;margin-bottom:4px}
+fieldset{border:0;padding:0;margin:12px 0}
+input[type=range],input[type=search]{width:100%}
+input[type=range]{accent-color:var(--lava)}
+input[type=search]{font:inherit;font-size:14px;padding:6px 8px;background:#0b1a17;color:var(--ink);border:1px solid var(--line)}
+.btns{display:flex;flex-wrap:wrap;gap:6px}
+button{font:inherit;font-size:13px;background:transparent;color:var(--ink);border:1px solid var(--sea);padding:6px 10px;cursor:pointer}
+button:hover,button[aria-pressed=true]{background:var(--sea);color:#06201d}
+:focus-visible{outline:2px solid var(--lava);outline-offset:2px}
+.chk{display:inline-flex;align-items:center;gap:5px;font-size:13px;margin:0 10px 4px 0}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block}
+#info{margin-top:12px;border-top:1px solid var(--line);padding-top:10px;font-size:14px;line-height:1.5;display:none}
+#info h2{font-size:16px;margin:0 0 4px}
+#info .dato{margin-top:6px;color:var(--lava);font-weight:700}
+#info small{color:var(--mute);display:block;margin-top:4px}
+#status{font-size:12px;color:var(--mute);margin-top:10px}
+#caption{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);max-width:min(640px,90%);background:rgba(16,35,31,.92);padding:10px 16px;font-size:16px;text-align:center;z-index:4;display:none;border-bottom:3px solid var(--lava)}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+</style></head><body>
+<div id="c"></div>
+<div id="caption" aria-live="polite"></div>
+<div id="panel">
+  <div class="top"><h1>Gemelo digital de Canarias</h1><button id="min" aria-label="Plegar panel">–</button></div>
+  <div class="body">
+  <p>Recorre las siete islas en 3D y cambia de época. Pulsa un punto para ver su ficha.</p>
+  <div id="era">Hoy</div>
+  <div class="row">
+    <label for="year">Año: <b id="yv">2026</b></label>
+    <input id="year" type="range" min="1400" max="2026" value="2026" step="1">
+  </div>
+  <div class="btns" id="eras">
+    <button data-y="1494">1494</button><button data-y="1600">1600</button><button data-y="1800">1800</button><button data-y="1960">1960</button><button data-y="2026">Hoy</button>
+  </div>
+  <div class="row">
+    <label for="q">Buscar lugar</label>
+    <input id="q" type="search" list="names" placeholder="Teide, Belmaco…" autocomplete="off">
+    <datalist id="names"></datalist>
+  </div>
+  <fieldset><legend>Mostrar</legend><div id="types"></div></fieldset>
+  <div class="row btns"><button id="tourAll">Recorrido guiado</button><button id="stop">Parar</button></div>
+  <div class="row btns" id="isl"></div>
+  <div id="info"></div>
+  <div id="status"></div>
+  </div>
+</div>
+
+<script>
+/* ===== CONFIGURACIÓN ===== */
+const TOKEN = "TU_TOKEN_GRATIS_DE_CESIUM_ION"; // https://ion.cesium.com → Access Tokens
+// Mapas históricos opcionales: tiles XYZ georreferenciados (QGIS/Allmaps). url vacío = desactivado.
+const MAPAS = [
+  {desde:1400,hasta:1799,url:"",nombre:"Cartografía siglo XVI (Torriani)"},
+  {desde:1800,hasta:1959,url:"",nombre:"Cartografía siglo XIX"}
+];
+
+/* ===== DATOS (edita/añade aquí; coordenadas aproximadas, verifica las fuentes) ===== */
+const POIS=[
+{n:"Tajogaite (Cumbre Vieja)",is:"La Palma",tipo:"Volcán",lat:28.61278,lon:-17.86611,d:2021,h:2026,
+ t:"Erupción del 19 de septiembre al 13 de diciembre de 2021. Las coladas alcanzaron el mar, crearon nuevos deltas lávicos y destruyeron más de 1.600 edificaciones en el valle de Aridane.",
+ dato:"85 días: la erupción histórica más larga de La Palma. El cono mide unos 200 m de altura.",f:"IGN / INVOLCAN"},
+{n:"Volcán Teneguía",is:"La Palma",tipo:"Volcán",lat:28.47167,lon:-17.85194,d:1971,h:2026,
+ t:"Erupción de 1971 en Fuencaliente, entre octubre y noviembre. Fue la última de La Palma antes de la de 2021.",dato:"Su cono alcanza unos 428 m de altitud.",f:"IGN / Cabildo de La Palma"},
+{n:"Caldera de Taburiente",is:"La Palma",tipo:"Naturaleza",lat:28.717,lon:-17.867,d:1400,h:2026,
+ t:"Gran depresión de origen erosivo y volcánico, declarada Parque Nacional en 1954. Era el corazón del cantón aborigen de Aceró.",
+ dato:"Entre 8 y 10 km de diámetro.",f:"Parque Nacional de la Caldera de Taburiente"},
+{n:"Observatorio del Roque de los Muchachos",is:"La Palma",tipo:"Ciencia",lat:28.7636,lon:-17.8947,d:1985,h:2026,
+ t:"Uno de los mejores cielos del hemisferio norte, inaugurado en 1985. Alberga el Gran Telescopio Canarias, inaugurado en 2009.",
+ dato:"El GTC tiene un espejo de 10,4 m de diámetro.",f:"IAC"},
+{n:"Santa Cruz de La Palma",is:"La Palma",tipo:"Patrimonio",lat:28.68351,lon:-17.76421,d:1493,h:2026,
+ t:"Fundada tras la conquista de la isla en 1493. Fue uno de los grandes puertos de la ruta atlántica con América en el siglo XVI.",
+ dato:"Alonso Fernández de Lugo completó la conquista de La Palma en 1493.",f:"Ayto. Santa Cruz de La Palma"},
+{n:"El Julan",is:"El Hierro",tipo:"Yacimiento",lat:27.708,lon:-18.059,d:1400,h:2026,
+ t:"Santuario bimbache con numerosos grabados rupestres, entre ellos alfabetiformes, y estructuras rituales.",
+ dato:"Hero era el nombre aborigen de El Hierro.",f:"Cabildo de El Hierro"},
+{n:"Parque Nacional de Garajonay",is:"La Gomera",tipo:"Naturaleza",lat:28.12625,lon:-17.23722,d:1400,h:2026,
+ t:"Uno de los mayores bosques de laurisilva del planeta, reliquia de una vegetación del Terciario que cubría el sur de Europa.",
+ dato:"Patrimonio Mundial desde 1986. Su techo es el Alto de Garajonay, de 1.487 m.",f:"UNESCO"},
+{n:"San Sebastián de La Gomera",is:"La Gomera",tipo:"Patrimonio",lat:28.09163,lon:-17.11331,d:1450,h:2026,
+ t:"Villa histórica con la Torre del Conde del siglo XV. Cristóbal Colón hizo escala en la isla en 1492 antes de cruzar el Atlántico.",
+ dato:"Colón volvió a Gomera en sus siguientes viajes.",f:"Cabildo de La Gomera"},
+{n:"Teide",is:"Tenerife",tipo:"Volcán",lat:28.27306,lon:-16.63944,d:1400,h:2026,
+ t:"Estratovolcán sagrado para los guanches, que lo llamaban Echeyde y lo consideraban morada de Guayota. Parque Nacional desde 1954.",
+ dato:"3.715 m: pico más alto de España. Patrimonio Mundial desde 2007.",f:"Parque Nacional del Teide / UNESCO"},
+{n:"Volcán Chinyero",is:"Tenerife",tipo:"Volcán",lat:28.294625,lon:-16.756923,d:1909,h:2026,
+ t:"Erupción de noviembre de 1909 en el noroeste de Tenerife, la última registrada en la isla.",
+ dato:"Duró diez días.",f:"IGN / Cabildo de Tenerife"},
+{n:"Observatorio del Teide",is:"Tenerife",tipo:"Ciencia",lat:28.30111,lon:-16.51056,d:1964,h:2026,
+ t:"Observatorio de Izaña, con telescopios solares y nocturnos. Es uno de los referentes mundiales en astrofísica solar.",
+ dato:"Está a 2.390 m y funciona desde 1964. En 1979 nació aquí la heliosismología.",f:"IAC"},
+{n:"San Cristóbal de La Laguna",is:"Tenerife",tipo:"Patrimonio",lat:28.4853,lon:-16.3201,d:1496,h:2026,
+ t:"Ciudad fundada tras la conquista de Tenerife. Su trazado civil, sin murallas, sirvió de modelo en ciudades hispanoamericanas.",
+ dato:"Patrimonio Mundial desde 1999.",f:"UNESCO"},
+{n:"Santa Cruz de Tenerife",is:"Tenerife",tipo:"Patrimonio",lat:28.4682,lon:-16.2546,d:1494,h:2026,
+ t:"Nació del desembarco de Alonso Fernández de Lugo en Añazo el 3 de mayo de 1494. En 1797 repelió el ataque de Nelson.",
+ dato:"En 1797 Nelson fue derrotado aquí y perdió el brazo derecho.",f:"Ayto. Santa Cruz de Tenerife"},
+{n:"Drago milenario de Icod",is:"Tenerife",tipo:"Naturaleza",lat:28.3666,lon:-16.7222,d:1400,h:2026,
+ t:"Ejemplar emblemático de Dracaena draco, especie símbolo de la flora canaria, cuya resina roja, la sangre de drago, usaban los aborígenes.",
+ dato:"Mide unos 21 m de altura y aparecía en los billetes de 1.000 pesetas.",f:"Ayto. Icod de los Vinos"},
+{n:"Parque Rural de Anaga",is:"Tenerife",tipo:"Naturaleza",lat:28.55,lon:-16.25,d:1400,h:2026,
+ t:"Macizo de laurisilva con gran concentración de especies endémicas, entre ellas insectos y plantas exclusivas de esta zona.",
+ dato:"Reserva de la Biosfera desde 2015.",f:"UNESCO"},
+{n:"Cueva Pintada (Gáldar)",is:"Gran Canaria",tipo:"Yacimiento",lat:28.14701,lon:-15.6502,d:1400,h:2026,
+ t:"Yacimiento aborigen con pinturas geométricas en rojo, negro y blanco, junto a Gáldar, sede del guanartemato.",
+ dato:"Tamarán era el nombre aborigen de Gran Canaria.",f:"Museo y Parque Arqueológico Cueva Pintada"},
+{n:"Risco Caído y Montañas Sagradas",is:"Gran Canaria",tipo:"Yacimiento",lat:28.0203,lon:-15.6486,d:1400,h:2026,
+ t:"Conjunto de santuarios, graneros y cuevas de la cultura aborigen en la cumbre. Incluye el Almogarén de Risco Caído, con observación astronómica.",
+ dato:"Patrimonio Mundial desde 2019.",f:"UNESCO"},
+{n:"Roque Nublo",is:"Gran Canaria",tipo:"Naturaleza",lat:27.97083,lon:-15.6125,d:1400,h:2026,
+ t:"Monolito de origen volcánico venerado por los aborígenes, símbolo de la isla.",dato:"Mide unos 80 m de altura.",f:"Cabildo de Gran Canaria"},
+{n:"Pico de las Nieves",is:"Gran Canaria",tipo:"Naturaleza",lat:27.96194,lon:-15.57167,d:1400,h:2026,
+ t:"Cumbre de Gran Canaria, con vistas al Teide en días claros. Tradicionalmente se consideró el techo de la isla.",dato:"Mide 1.949 m. El vecino Morro de la Agujereada alcanza 1.956 m según el IGN.",f:"Cabildo de Gran Canaria"},
+{n:"Vegueta",is:"Gran Canaria",tipo:"Patrimonio",lat:28.1018,lon:-15.4153,d:1478,h:2026,
+ t:"Barrio fundacional de Las Palmas, nacido en 1478 durante la conquista. Conserva la catedral de Santa Ana y la casa de Colón.",
+ dato:"Gran Canaria fue conquistada en 1483.",f:"Ayto. Las Palmas de G.C."},
+{n:"Dunas de Maspalomas",is:"Gran Canaria",tipo:"Naturaleza",lat:27.741,lon:-15.582,d:1400,h:2026,
+ t:"Campo de dunas, palmeral y charca litoral declarado Reserva Natural Especial. Sus arenas se renuevan por el viento.",
+ dato:"Ocupa unas 400 ha.",f:"Cabildo de Gran Canaria"},
+{n:"Teguise",is:"Lanzarote",tipo:"Patrimonio",lat:29.06049,lon:-13.56397,d:1418,h:2026,
+ t:"Antigua capital de Lanzarote, castigada por ataques piratas. Su caserío histórico se conserva casi intacto.",
+ dato:"Fue capital de la isla hasta 1852.",f:"Ayto. Teguise"},
+{n:"Montañas del Fuego (Timanfaya)",is:"Lanzarote",tipo:"Volcán",lat:29.00625,lon:-13.7542,d:1730,h:2026,
+ t:"Erupciones de 1730 a 1736 que sepultaron cerca de un cuarto de la isla y cambiaron el modo de vida de la población.",
+ dato:"Seis años de actividad volcánica ininterrumpida.",f:"Parque Nacional de Timanfaya"},
+{n:"Jameos del Agua",is:"Lanzarote",tipo:"Patrimonio",lat:29.15742,lon:-13.43162,d:1966,h:2026,
+ t:"Tubo volcánico del volcán de la Corona intervenido por César Manrique. Las obras comenzaron en 1966 y la estructura general se completó en 1977.",
+ dato:"Vive aquí el cangrejo ciego, especie endémica de unos 1 cm.",f:"Centros de Arte, Cultura y Turismo"},
+{n:"Cueva de los Verdes",is:"Lanzarote",tipo:"Naturaleza",lat:29.16111,lon:-13.43889,d:1400,h:2026,
+ t:"Tramo de un gran tubo volcánico formado por la erupción del volcán de la Corona, usado como refugio por la población ante los piratas.",
+ dato:"El tubo completo supera los 6 km.",f:"Centros de Arte, Cultura y Turismo"},
+{n:"Betancuria",is:"Fuerteventura",tipo:"Patrimonio",lat:28.425,lon:-14.05556,d:1405,h:2026,
+ t:"Primera capital de Fuerteventura, fundada en 1404 por Jean de Béthencourt y Gadifer de la Salle en un valle protegido de los piratas, aunque fue saqueada en 1593.",
+ dato:"Fue capital de Fuerteventura hasta 1834, cuando pasó a Antigua.",f:"Cabildo de Fuerteventura"},
+{n:"Montaña de Tindaya",is:"Fuerteventura",tipo:"Yacimiento",lat:28.59,lon:-13.971,d:1400,h:2026,
+ t:"Montaña sagrada de los majos, con cientos de grabados en forma de pies, los podomorfos, orientados hacia el sol del solsticio.",
+ dato:"Es Monumento Natural.",f:"Cabildo de Fuerteventura"},
+{n:"Dunas de Corralejo",is:"Fuerteventura",tipo:"Naturaleza",lat:28.69431,lon:-13.84658,d:1400,h:2026,
+ t:"Campo de dunas de arena organógena en el norte de la isla, protegido como Parque Natural.",dato:"Fuerteventura es Reserva de la Biosfera desde 2009.",f:"Cabildo de Fuerteventura"},
+{n:"Los Llanos de Aridane",is:"La Palma",tipo:"Patrimonio",lat:28.65851,lon:-17.91821,d:1500,h:2026,
+ t:"Cabecera del valle de Aridane, centro agrícola del plátano y una de las zonas más afectadas por la erupción de 2021.",dato:"Es el municipio más poblado de La Palma.",f:"Ayto. Los Llanos de Aridane"},
+{n:"Los Tilos",is:"La Palma",tipo:"Naturaleza",lat:28.7977,lon:-17.771,d:1400,h:2026,
+ t:"Bosque de laurisilva en San Andrés y Sauces, uno de los mejor conservados de la isla.",dato:"Reserva de la Biosfera desde 1983; toda La Palma lo es desde 2002.",f:"UNESCO"},
+{n:"Valverde",is:"El Hierro",tipo:"Patrimonio",lat:27.80628,lon:-17.91578,d:1500,h:2026,
+ t:"Capital de El Hierro y la única capital insular de Canarias que no está en la costa.",dato:"Se sitúa a unos 570 m de altitud.",f:"Cabildo de El Hierro"},
+{n:"Punta de Orchilla (Meridiano Cero)",is:"El Hierro",tipo:"Patrimonio",lat:27.7067,lon:-18.1475,d:1400,h:2026,
+ t:"Extremo occidental de la isla, que durante siglos marcó el meridiano de referencia del mundo conocido.",dato:"Se usó como meridiano de referencia hasta 1884, cuando se adoptó Greenwich.",f:"Cabildo de El Hierro"},
+{n:"Pico de Malpaso",is:"El Hierro",tipo:"Naturaleza",lat:27.7294,lon:-18.0406,d:1400,h:2026,
+ t:"Cumbre de la isla, en el borde del arco de El Golfo, con vistas a todo el territorio herreño.",dato:"1.501 m: el punto más alto de El Hierro.",f:"IGN"},
+{n:"Valle Gran Rey",is:"La Gomera",tipo:"Naturaleza",lat:28.1,lon:-17.333,d:1400,h:2026,
+ t:"Profundo barranco del oeste de La Gomera, con laderas aterrazadas por cultivos tradicionales.",dato:"Sus bancales de piedra seca se cultivaron durante siglos.",f:"Cabildo de La Gomera"},
+{n:"Garachico",is:"Tenerife",tipo:"Patrimonio",lat:28.37365,lon:-16.76342,d:1500,h:2026,
+ t:"Fue el puerto principal de Tenerife hasta la erupción de Trevejo, que lo sepultó y dio origen a las piscinas naturales actuales.",dato:"La erupción de 1706 destruyó su puerto.",f:"Ayto. Garachico"},
+{n:"Basílica de Candelaria",is:"Tenerife",tipo:"Patrimonio",lat:28.3548,lon:-16.37268,d:1400,h:2026,
+ t:"Santuario de la Virgen de Candelaria, patrona de Canarias, cuya imagen según la tradición veneraban ya los guanches.",dato:"Los guanches la llamaban Chaxiraxi.",f:"Ayto. Candelaria"},
+{n:"Tejeda",is:"Gran Canaria",tipo:"Patrimonio",lat:27.99508,lon:-15.61543,d:1500,h:2026,
+ t:"Pueblo de cumbre en el borde de la Caldera de Tejeda, rodeado de almendros y cultivos en terraza.",dato:"Está dentro del paisaje cultural Patrimonio Mundial desde 2019.",f:"Cabildo de Gran Canaria"},
+{n:"Teror",is:"Gran Canaria",tipo:"Patrimonio",lat:28.06062,lon:-15.54909,d:1500,h:2026,
+ t:"Villa histórica con la Basílica de Nuestra Señora del Pino, patrona de Gran Canaria, y balcones canarios de madera.",dato:"Su casco histórico es Bien de Interés Cultural.",f:"Ayto. Teror"},
+{n:"Arrecife",is:"Lanzarote",tipo:"Patrimonio",lat:28.963,lon:-13.5477,d:1590,h:2026,
+ t:"Capital de Lanzarote, defendida desde finales del siglo XVI por castillos frente a los ataques piratas.",dato:"Es la capital de la isla desde 1852.",f:"Ayto. Arrecife"},
+{n:"Puerto del Rosario",is:"Fuerteventura",tipo:"Patrimonio",lat:28.50038,lon:-13.86272,d:1860,h:2026,
+ t:"Capital insular de Fuerteventura, antes llamada Puerto de Cabras, por su función como puerto de la isla.",dato:"Cambió su nombre en 1956.",f:"Ayto. Puerto del Rosario"},
+{n:"Casa de los Coroneles (La Oliva)",is:"Fuerteventura",tipo:"Patrimonio",lat:28.61052,lon:-13.92912,d:1700,h:2026,
+ t:"Gran casa del siglo XVIII asociada a los coroneles que ejercieron el poder militar en Fuerteventura.",dato:"Hoy es un espacio cultural.",f:"Cabildo de Fuerteventura"},
+{n:"Isla de Lobos",is:"Fuerteventura",tipo:"Naturaleza",lat:28.75118,lon:-13.82441,d:1400,h:2026,
+ t:"Islote volcánico protegido como Parque Natural, con playas, dunas y el faro de Martiño.",dato:"Se llega en barco desde Corralejo.",f:"Cabildo de Fuerteventura"},
+{n:"Tazacorte",is:"La Palma",tipo:"Patrimonio",lat:28.64186,lon:-17.93394,d:1492,h:2026,
+ t:"Por aquí desembarcó Alonso Fernández de Lugo en 1492 para iniciar la conquista de La Palma, que concluyó en 1493.",dato:"Hoy es uno de los municipios plataneros del valle de Aridane.",f:"Ayto. Tazacorte"},
+{n:"El Paso",is:"La Palma",tipo:"Patrimonio",lat:28.65007,lon:-17.88274,d:1500,h:2026,
+ t:"Municipio del centro de la isla, con acceso a la Caldera de Taburiente. El cono de Tajogaite se formó en su término.",dato:"Mantiene la artesanía tradicional de la seda.",f:"Ayto. El Paso"},
+{n:"Mazo",is:"La Palma",tipo:"Yacimiento",lat:28.60906,lon:-17.77801,d:1400,h:2026,
+ t:"Municipio con alfarería tradicional hecha a mano. En su término está la Cueva de Belmaco, santuario benahoarita con grabados de espirales.",dato:"Benahoare era el nombre aborigen de La Palma.",f:"Cabildo de La Palma"},
+{n:"Fuencaliente",is:"La Palma",tipo:"Naturaleza",lat:28.49236,lon:-17.84529,d:1500,h:2026,
+ t:"Municipio más meridional de La Palma, con viñedos sobre suelo volcánico, salinas marinas y los volcanes San Antonio y Teneguía.",dato:"Teneguía (1971) fue la última erupción antes de Tajogaite.",f:"Cabildo de La Palma"},
+{n:"Garafía",is:"La Palma",tipo:"Yacimiento",lat:28.81667,lon:-17.93333,d:1400,h:2026,
+ t:"Municipio del noroeste con los grabados rupestres de La Zarza y La Zarcita, otro gran conjunto benahoarita de espirales y círculos.",dato:"La Zarza y La Zarcita forman un parque cultural.",f:"Cabildo de La Palma"},
+{n:"Frontera (Valle de El Golfo)",is:"El Hierro",tipo:"Naturaleza",lat:27.75404,lon:-18.00367,d:1400,h:2026,
+ t:"Cabecera del Valle de El Golfo, un enorme anfiteatro abierto al mar por un gran deslizamiento de ladera hace miles de años.",dato:"El escarpe del Golfo alcanza unos 1.000 m de altura.",f:"Cabildo de El Hierro"},
+{n:"Hermigua",is:"La Gomera",tipo:"Patrimonio",lat:28.16766,lon:-17.19051,d:1500,h:2026,
+ t:"Valle verde del norte de La Gomera, con terrazas de plataneras y el Convento de Santo Domingo.",dato:"El convento es del siglo XVII.",f:"Cabildo de La Gomera"},
+{n:"Vallehermoso",is:"La Gomera",tipo:"Naturaleza",lat:28.1794,lon:-17.2666,d:1400,h:2026,
+ t:"Municipio del norte de La Gomera, dominado por roques volcánicos como el Roque Cano.",dato:"Los roques son restos de antiguos conductos volcánicos.",f:"Cabildo de La Gomera"},
+{n:"Agulo",is:"La Gomera",tipo:"Patrimonio",lat:28.18778,lon:-17.19678,d:1500,h:2026,
+ t:"Pueblo colgado sobre un acantilado, con vistas al Teide y a la costa norte de la isla.",dato:"La Gomera es Reserva de la Biosfera desde 2012.",f:"Cabildo de La Gomera"},
+{n:"Vilaflor",is:"Tenerife",tipo:"Patrimonio",lat:28.15623,lon:-16.63592,d:1500,h:2026,
+ t:"Pueblo de montaña a las puertas del Parque Nacional del Teide, rodeado de pinar canario.",dato:"Está a unos 1.400 m, entre los municipios más altos de España.",f:"Cabildo de Tenerife"},
+{n:"La Orotava",is:"Tenerife",tipo:"Patrimonio",lat:28.39076,lon:-16.52309,d:1496,h:2026,
+ t:"Villa histórica del valle de Taoro con casas de balcones de madera. Fue territorio del mencey de Taoro, el mayor de los menceyatos.",dato:"Sus alfombras del Corpus Christi se hacen con arena volcánica y flores.",f:"Ayto. La Orotava"},
+{n:"Puerto de la Cruz",is:"Tenerife",tipo:"Patrimonio",lat:28.41686,lon:-16.55085,d:1500,h:2026,
+ t:"Puerto histórico del valle de La Orotava y una de las primeras ciudades turísticas de Canarias.",dato:"El Jardín Botánico se creó aquí en 1788 por orden de Carlos III.",f:"Ayto. Puerto de la Cruz"},
+{n:"Adeje",is:"Tenerife",tipo:"Patrimonio",lat:28.12271,lon:-16.726,d:1400,h:2026,
+ t:"Sede de uno de los nueve menceyatos guanches de Tenerife. Conserva la Casa Fuerte, edificio del siglo XVI.",dato:"Su barranco del Infierno es una de las rutas más conocidas del sur.",f:"Ayto. Adeje"},
+{n:"Güímar",is:"Tenerife",tipo:"Patrimonio",lat:28.3112,lon:-16.4127,d:1400,h:2026,
+ t:"Valle del sureste de Tenerife, antiguo menceyato y escenario de la tradición de la aparición de la Virgen de Candelaria.",dato:"Fue sede de uno de los nueve menceyatos guanches.",f:"Ayto. Güímar"},
+{n:"Tacoronte",is:"Tenerife",tipo:"Patrimonio",lat:28.47688,lon:-16.41016,d:1500,h:2026,
+ t:"Municipio vitivinícola del norte de Tenerife, con viñedos en pequeñas parcelas de ladera.",dato:"Tacoronte-Acentejo fue la primera Denominación de Origen de Canarias, en 1992.",f:"Ayto. Tacoronte"},
+{n:"Buenavista del Norte (Punta de Teno)",is:"Tenerife",tipo:"Naturaleza",lat:28.3745,lon:-16.8609,d:1400,h:2026,
+ t:"Municipio del extremo noroeste, junto al macizo de Teno y la Punta de Teno con su faro.",dato:"Masca pertenece a este municipio.",f:"Ayto. Buenavista del Norte"},
+{n:"Acantilados de Los Gigantes",is:"Tenerife",tipo:"Naturaleza",lat:28.2436,lon:-16.8415,d:1400,h:2026,
+ t:"Muro vertical de roca volcánica que cae directamente al Atlántico en la costa oeste de Tenerife.",dato:"Los acantilados alcanzan unos 600 m de altura.",f:"Cabildo de Tenerife"},
+{n:"Santiago del Teide",is:"Tenerife",tipo:"Patrimonio",lat:28.294,lon:-16.81618,d:1500,h:2026,
+ t:"Municipio del oeste de Tenerife, al pie del Teide y del volcán Chinyero.",dato:"Su término incluye el volcán Chinyero, de 1909.",f:"Cabildo de Tenerife"},
+{n:"Telde",is:"Gran Canaria",tipo:"Patrimonio",lat:27.99243,lon:-15.41919,d:1400,h:2026,
+ t:"Una de las dos grandes capitales aborígenes de Gran Canaria junto a Gáldar. Conserva barrios históricos como San Juan y San Francisco.",dato:"Gran Canaria estaba dividida en dos guanartematos: Telde y Gáldar.",f:"Ayto. Telde"},
+{n:"Agüimes",is:"Gran Canaria",tipo:"Patrimonio",lat:27.9053,lon:-15.446,d:1500,h:2026,
+ t:"Villa histórica del sureste de Gran Canaria, con calles empedradas y la iglesia de San Sebastián.",dato:"Fue señorío de los obispos de Canarias.",f:"Ayto. Agüimes"},
+{n:"Arucas",is:"Gran Canaria",tipo:"Patrimonio",lat:28.11983,lon:-15.52325,d:1500,h:2026,
+ t:"Ciudad del norte de Gran Canaria, conocida por la iglesia neogótica de San Juan Bautista, construida en cantería azul, y por su ron.",dato:"La iglesia comenzó a construirse en 1909.",f:"Ayto. Arucas"},
+{n:"Artenara",is:"Gran Canaria",tipo:"Patrimonio",lat:28.02055,lon:-15.64693,d:1400,h:2026,
+ t:"Pueblo de cumbre con numerosas casas cueva excavadas en la roca, tradición que se remonta a la época aborigen.",dato:"Está a más de 1.200 m: es el municipio más alto de Gran Canaria.",f:"Cabildo de Gran Canaria"},
+{n:"Agaete",is:"Gran Canaria",tipo:"Patrimonio",lat:28.10023,lon:-15.69998,d:1400,h:2026,
+ t:"Valle y puerto de Las Nieves, en el noroeste de Gran Canaria. Conserva la tradición de la Fiesta de la Rama.",dato:"La Fiesta de la Rama se celebra cada 4 de agosto.",f:"Ayto. Agaete"},
+{n:"Haría",is:"Lanzarote",tipo:"Patrimonio",lat:29.14553,lon:-13.49986,d:1500,h:2026,
+ t:"Pueblo del norte de Lanzarote en un valle de palmeras. César Manrique pasó aquí sus últimos años.",dato:"Se le conoce como el valle de las mil palmeras.",f:"Ayto. Haría"},
+{n:"Yaiza",is:"Lanzarote",tipo:"Patrimonio",lat:28.95678,lon:-13.76535,d:1500,h:2026,
+ t:"Pueblo de casas blancas a las puertas del Parque Nacional de Timanfaya, entre La Geria y las Montañas del Fuego.",dato:"Su término incluye gran parte del Parque Nacional de Timanfaya.",f:"Ayto. Yaiza"},
+{n:"Pájara",is:"Fuerteventura",tipo:"Patrimonio",lat:28.35039,lon:-14.1076,d:1600,h:2026,
+ t:"Pueblo del oeste de Fuerteventura con la iglesia de Nuestra Señora de la Regla.",dato:"La portada de la iglesia tiene relieves de inspiración precolombina.",f:"Cabildo de Fuerteventura"},
+{n:"Tuineje",is:"Fuerteventura",tipo:"Patrimonio",lat:28.3237,lon:-14.0472,d:1740,h:2026,
+ t:"En 1740 los majoreros derrotaron aquí a corsarios ingleses en las batallas de Tamasite y El Cuchillete.",dato:"Ambas batallas se libraron en 1740.",f:"Ayto. Tuineje"},
+{n:"El Cotillo",is:"Fuerteventura",tipo:"Patrimonio",lat:28.6826,lon:-14.0063,d:1700,h:2026,
+ t:"Pueblo pesquero del noroeste de Fuerteventura con el castillo de El Tostón, torre defensiva contra piratas.",dato:"El castillo se construyó en 1700.",f:"Cabildo de Fuerteventura"},
+{n:"Tinajo",is:"Lanzarote",tipo:"Patrimonio",lat:29.06326,lon:-13.67647,d:1500,h:2026,
+ t:"Municipio del oeste de Lanzarote, entre La Geria y las Montañas del Fuego. En Mancha Blanca se venera a la Virgen de los Dolores, patrona de la isla.",dato:"Parte del Parque Nacional de Timanfaya está en su término.",f:"Cabildo de Lanzarote"},
+{n:"Tías",is:"Lanzarote",tipo:"Patrimonio",lat:28.96108,lon:-13.64502,d:1500,h:2026,
+ t:"Municipio del sureste de Lanzarote con un interior agrícola de viñedos y cultivos sobre picón, y un litoral turístico.",dato:"Puerto del Carmen es su principal núcleo turístico.",f:"Cabildo de Lanzarote"},
+{n:"San Bartolomé",is:"Lanzarote",tipo:"Patrimonio",lat:29.00093,lon:-13.613,d:1500,h:2026,
+ t:"Municipio del centro de Lanzarote, en el entorno agrícola de Mozaga.",dato:"El Monumento al Campesino, de César Manrique, se alza en Mozaga.",f:"Cabildo de Lanzarote"},
+{n:"Nazaret",is:"Lanzarote",tipo:"Patrimonio",lat:29.03818,lon:-13.56386,d:1500,h:2026,
+ t:"Núcleo del municipio de Teguise, próximo a Tahíche, donde está la Fundación César Manrique.",dato:"Forma parte de Teguise, antigua capital de la isla.",f:"Cabildo de Lanzarote"},
+{n:"Puerto del Carmen",is:"Lanzarote",tipo:"Patrimonio",lat:28.92313,lon:-13.66579,d:1960,h:2026,
+ t:"Antiguo pueblo pesquero del sur de Lanzarote convertido en destino turístico a partir de los años 60.",dato:"Hoy es uno de los principales destinos turísticos de la isla.",f:"Ayto. Tías"},
+{n:"Costa Teguise",is:"Lanzarote",tipo:"Patrimonio",lat:28.99838,lon:-13.49911,d:1970,h:2026,
+ t:"Urbanización turística del este de Lanzarote, planificada como complejo vacacional en los años 70.",dato:"Pertenece al municipio de Teguise.",f:"Ayto. Teguise"},
+{n:"Playa Blanca",is:"Lanzarote",tipo:"Patrimonio",lat:28.86426,lon:-13.82814,d:1960,h:2026,
+ t:"Antiguo pueblo pesquero del sur de Lanzarote, hoy núcleo turístico y puerto de conexión con Fuerteventura.",dato:"Cerca están las playas de Papagayo, dentro del Monumento Natural Los Ajaches.",f:"Ayto. Yaiza"},
+{n:"Antigua",is:"Fuerteventura",tipo:"Patrimonio",lat:28.42307,lon:-14.01379,d:1700,h:2026,
+ t:"Municipio del centro de Fuerteventura, con el Molino de Antigua y un centro de artesanía.",dato:"Se fundó a finales del siglo XVIII.",f:"Cabildo de Fuerteventura"},
+{n:"Corralejo",is:"Fuerteventura",tipo:"Patrimonio",lat:28.73079,lon:-13.86749,d:1960,h:2026,
+ t:"Pueblo pesquero del norte de Fuerteventura convertido en destino turístico, junto a las dunas.",dato:"Desde su puerto salen barcos a Isla de Lobos y a Lanzarote.",f:"Ayto. La Oliva"},
+{n:"Costa Calma",is:"Fuerteventura",tipo:"Patrimonio",lat:28.16155,lon:-14.22691,d:1970,h:2026,
+ t:"Núcleo turístico del istmo de La Pared, puerta de entrada a la península de Jandía.",dato:"Está junto a las largas playas de Sotavento.",f:"Cabildo de Fuerteventura"},
+{n:"Moya",is:"Gran Canaria",tipo:"Patrimonio",lat:28.11106,lon:-15.58285,d:1500,h:2026,
+ t:"Pueblo del norte de Gran Canaria, en la zona que ocupaba el antiguo Monteverde de Doramas, de laurisilva.",dato:"Allí nació el poeta Tomás Morales, en 1884.",f:"Ayto. Moya"},
+{n:"Mogán",is:"Gran Canaria",tipo:"Patrimonio",lat:27.88385,lon:-15.72538,d:1500,h:2026,
+ t:"Municipio del suroeste de Gran Canaria con valles agrícolas y el Puerto de Mogán, antiguo barrio de pescadores.",dato:"Su clima es de los más cálidos y soleados de la isla.",f:"Ayto. Mogán"},
+{n:"Firgas",is:"Gran Canaria",tipo:"Patrimonio",lat:28.10711,lon:-15.56299,d:1500,h:2026,
+ t:"Villa del norte de Gran Canaria famosa por su agua mineral y por el Paseo de Gran Canaria.",dato:"El paseo central tiene una cascada y los escudos de los municipios de la isla en azulejos.",f:"Ayto. Firgas"},
+{n:"Valsequillo",is:"Gran Canaria",tipo:"Patrimonio",lat:27.98562,lon:-15.49725,d:1500,h:2026,
+ t:"Municipio de medianías del este de Gran Canaria, entre barrancos y cultivos de frutales.",dato:"Está entre Telde y la cumbre de la isla.",f:"Cabildo de Gran Canaria"},
+{n:"Santa Lucía de Tirajana",is:"Gran Canaria",tipo:"Yacimiento",lat:27.91174,lon:-15.54071,d:1483,h:2026,
+ t:"Municipio del sureste con la Fortaleza Grande, en Ansite, y el Museo Castillo de la Fortaleza.",dato:"Ansite fue el último reducto aborigen en la conquista de Gran Canaria (1483).",f:"Cabildo de Gran Canaria"},
+{n:"Ingenio",is:"Gran Canaria",tipo:"Patrimonio",lat:27.91855,lon:-15.43433,d:1500,h:2026,
+ t:"Municipio del este de Gran Canaria con una larga tradición de artesanía textil y cerámica.",dato:"Es famoso por los calados, bordados de tradición centenaria.",f:"Ayto. Ingenio"},
+{n:"Santa Brígida",is:"Gran Canaria",tipo:"Patrimonio",lat:28.03197,lon:-15.50425,d:1500,h:2026,
+ t:"Municipio de medianías junto a la Caldera de Bandama, con viñedos y casas tradicionales.",dato:"Allí está el club de golf más antiguo de España, fundado en 1891.",f:"Real Club de Golf de Las Palmas"},
+{n:"Vega de San Mateo",is:"Gran Canaria",tipo:"Patrimonio",lat:28.00892,lon:-15.5333,d:1500,h:2026,
+ t:"Municipio de cumbre con tradición agrícola y ganadera. Su mercado es uno de los más conocidos de la isla.",dato:"Alberga la Casa Museo Cho Zacarías.",f:"Cabildo de Gran Canaria"},
+{n:"Valleseco",is:"Gran Canaria",tipo:"Naturaleza",lat:28.0433,lon:-15.57623,d:1500,h:2026,
+ t:"Municipio de cumbres húmedas del centro-norte, con restos de laurisilva y paisaje agrícola de medianías.",dato:"Es uno de los pueblos más verdes de la isla.",f:"Cabildo de Gran Canaria"},
+{n:"La Aldea de San Nicolás",is:"Gran Canaria",tipo:"Patrimonio",lat:27.9891,lon:-15.78126,d:1500,h:2026,
+ t:"Pueblo del oeste de Gran Canaria, aislado entre montañas y mar, con una fuerte tradición agrícola.",dato:"Cada septiembre se celebra la Fiesta del Charco.",f:"Ayto. San Nicolás de Tolentino"},
+{n:"San Bartolomé de Tirajana",is:"Gran Canaria",tipo:"Patrimonio",lat:27.92481,lon:-15.57329,d:1500,h:2026,
+ t:"Municipio del sur de Gran Canaria que va de las cumbres a la costa, con pueblos de montaña como Fataga.",dato:"Su término incluye Maspalomas y Playa del Inglés.",f:"Ayto. San Bartolomé de Tirajana"},
+{n:"Puerto Rico",is:"Gran Canaria",tipo:"Patrimonio",lat:27.78943,lon:-15.71045,d:1970,h:2026,
+ t:"Núcleo turístico del suroeste de Gran Canaria, en el municipio de Mogán, desarrollado en torno a una bahía.",dato:"Se desarrolló a partir de los años 70.",f:"Ayto. Mogán"},
+{n:"Playa del Inglés",is:"Gran Canaria",tipo:"Patrimonio",lat:27.7567,lon:-15.5787,d:1960,h:2026,
+ t:"Núcleo turístico del sur de Gran Canaria, desarrollado desde los años 60 junto a las dunas de Maspalomas.",dato:"Está junto a la Reserva Natural Especial de las Dunas de Maspalomas.",f:"Ayto. San Bartolomé de Tirajana"},
+{n:"Tegueste",is:"Tenerife",tipo:"Patrimonio",lat:28.52236,lon:-16.34074,d:1500,h:2026,
+ t:"Villa agrícola del noreste de Tenerife, junto al macizo de Anaga, con tradición de romerías.",dato:"La Romería de San Marcos se celebra en abril.",f:"Ayto. Tegueste"},
+{n:"Los Silos",is:"Tenerife",tipo:"Naturaleza",lat:28.3661,lon:-16.81552,d:1500,h:2026,
+ t:"Pueblo del noroeste de Tenerife, junto al macizo de Teno, con casco tradicional y acceso a la laurisilva.",dato:"En su término está el Monte del Agua, bosque de laurisilva.",f:"Ayto. Los Silos"},
+{n:"Guía de Isora",is:"Tenerife",tipo:"Patrimonio",lat:28.21154,lon:-16.77947,d:1500,h:2026,
+ t:"Municipio del oeste de Tenerife, con medianías agrícolas y una costa que mira a La Gomera.",dato:"Entre sus núcleos costeros están Playa San Juan y Alcalá.",f:"Ayto. Guía de Isora"},
+{n:"Arona (Los Cristianos)",is:"Tenerife",tipo:"Patrimonio",lat:28.09962,lon:-16.68102,d:1500,h:2026,
+ t:"Municipio del sur de Tenerife. Su núcleo costero de Los Cristianos fue pueblo de pescadores y hoy es puerto de enlace con otras islas.",dato:"Desde Los Cristianos salen barcos a La Gomera, La Palma y El Hierro.",f:"Ayto. Arona"},
+{n:"Fasnia",is:"Tenerife",tipo:"Volcán",lat:28.23638,lon:-16.43886,d:1705,h:2026,
+ t:"Municipio del sureste de Tenerife, escenario de una de las erupciones históricas de la isla.",dato:"En enero de 1705 entró en erupción el volcán de Fasnia.",f:"IGN / Ayto. Fasnia"},
+{n:"Arafo",is:"Tenerife",tipo:"Volcán",lat:28.33971,lon:-16.42244,d:1705,h:2026,
+ t:"Pueblo del valle de Güímar, escenario de una de las erupciones de 1705.",dato:"El volcán de Arafo estuvo activo entre febrero y marzo de 1705.",f:"IGN / Ayto. Arafo"},
+{n:"Tanque",is:"Tenerife",tipo:"Patrimonio",lat:28.35584,lon:-16.77986,d:1500,h:2026,
+ t:"Pequeño municipio de las medianías del noroeste de Tenerife, junto a Garachico.",dato:"Es uno de los municipios con menor población de la isla.",f:"Ayto. El Tanque"},
+{n:"La Victoria de Acentejo",is:"Tenerife",tipo:"Patrimonio",lat:28.43231,lon:-16.46232,d:1495,h:2026,
+ t:"Escenario de la segunda batalla de Acentejo, en 1495, en la que las tropas de Lugo vencieron a los guanches.",dato:"Su victoria fue decisiva para completar la conquista de Tenerife en 1496.",f:"Ayto. La Victoria de Acentejo"},
+{n:"La Matanza de Acentejo",is:"Tenerife",tipo:"Patrimonio",lat:28.45242,lon:-16.4472,d:1494,h:2026,
+ t:"Escenario de la primera batalla de Acentejo, a finales de 1494, en la que los guanches derrotaron a las tropas castellanas.",dato:"El topónimo recuerda la matanza de las tropas de Lugo.",f:"Ayto. La Matanza de Acentejo"},
+{n:"La Guancha",is:"Tenerife",tipo:"Patrimonio",lat:28.3732,lon:-16.65158,d:1500,h:2026,
+ t:"Villa del norte de Tenerife, entre Icod y San Juan de la Rambla, con medianías agrícolas y bosques de pinos.",dato:"Su nombre hace referencia a los guanches, los antiguos pobladores de la isla.",f:"Ayto. La Guancha"},
+{n:"Granadilla de Abona",is:"Tenerife",tipo:"Patrimonio",lat:28.11882,lon:-16.57599,d:1500,h:2026,
+ t:"Municipio del sur de Tenerife que se extiende de la cumbre a la costa.",dato:"En su término están El Médano, Montaña Roja y el aeropuerto Tenerife Sur.",f:"Ayto. Granadilla de Abona"},
+{n:"San Miguel de Abona",is:"Tenerife",tipo:"Patrimonio",lat:28.09826,lon:-16.61708,d:1500,h:2026,
+ t:"Municipio de medianías del sur de Tenerife, con tradición agrícola entre Arona y Granadilla.",dato:"Forma parte de la comarca de Abona.",f:"Ayto. San Miguel de Abona"},
+{n:"Santa Úrsula",is:"Tenerife",tipo:"Patrimonio",lat:28.42613,lon:-16.48876,d:1500,h:2026,
+ t:"Municipio del norte de Tenerife, entre La Victoria y La Orotava, con viñedos de medianías.",dato:"Forma parte de la zona de la Denominación de Origen Tacoronte-Acentejo.",f:"Ayto. Santa Úrsula"},
+{n:"El Sauzal",is:"Tenerife",tipo:"Patrimonio",lat:28.46667,lon:-16.41667,d:1500,h:2026,
+ t:"Municipio vitivinícola del norte de Tenerife, con viñedos en pequeñas parcelas de ladera.",dato:"Allí está la Casa del Vino La Baranda.",f:"Ayto. El Sauzal"},
+{n:"San Juan de la Rambla",is:"Tenerife",tipo:"Patrimonio",lat:28.39276,lon:-16.65015,d:1500,h:2026,
+ t:"Municipio del norte de Tenerife, entre La Guancha y Los Realejos, con costa de piscinas naturales.",dato:"El Charco de la Laja es una de sus piscinas naturales más conocidas.",f:"Ayto. San Juan de la Rambla"},
+{n:"Los Realejos",is:"Tenerife",tipo:"Patrimonio",lat:28.38487,lon:-16.58275,d:1500,h:2026,
+ t:"Municipio del valle de La Orotava, en la antigua zona del menceyato de Taoro.",dato:"Está dividido en dos núcleos históricos: Realejo Alto y Realejo Bajo.",f:"Ayto. Los Realejos"},
+{n:"Alajeró",is:"La Gomera",tipo:"Patrimonio",lat:28.06205,lon:-17.24073,d:1500,h:2026,
+ t:"Municipio del sur de La Gomera, con barrancos y terrazas agrícolas que bajan hacia Playa de Santiago.",dato:"En su término está el aeropuerto de La Gomera.",f:"Cabildo de La Gomera"},
+{n:"Breña Alta",is:"La Palma",tipo:"Patrimonio",lat:28.65,lon:-17.78333,d:1500,h:2026,
+ t:"Municipio del este de La Palma, entre Santa Cruz y la Caldera de Taburiente, con tradición agrícola.",dato:"La Palma es conocida por sus puros artesanales.",f:"Cabildo de La Palma"},
+{n:"Breña Baja",is:"La Palma",tipo:"Patrimonio",lat:28.63011,lon:-17.78953,d:1500,h:2026,
+ t:"Municipio costero del este de La Palma.",dato:"Los Cancajos es una de las zonas de baño más conocidas de la isla.",f:"Cabildo de La Palma"},
+{n:"Puntallana",is:"La Palma",tipo:"Naturaleza",lat:28.73333,lon:-17.73333,d:1500,h:2026,
+ t:"Municipio del noreste de La Palma, entre Santa Cruz y San Andrés y Sauces, con barrancos y plataneras.",dato:"En su término está el bosque de laurisilva de La Galga.",f:"Cabildo de La Palma"},
+{n:"Tijarafe",is:"La Palma",tipo:"Naturaleza",lat:28.7,lon:-17.95,d:1500,h:2026,
+ t:"Municipio del oeste de La Palma, con barrancos y miradores sobre el valle de Aridane y el océano.",dato:"Su costa cae en acantilados hacia el Atlántico.",f:"Cabildo de La Palma"},
+{n:"Puntagorda",is:"La Palma",tipo:"Naturaleza",lat:28.7749,lon:-17.97741,d:1500,h:2026,
+ t:"Municipio del noroeste de La Palma, conocido por sus campos de almendros.",dato:"Sus almendros florecen a principios de año.",f:"Cabildo de La Palma"},
+{n:"Barlovento",is:"La Palma",tipo:"Naturaleza",lat:28.82708,lon:-17.80377,d:1500,h:2026,
+ t:"Municipio del noreste de La Palma con piscinas naturales como La Fajana y la laguna de Barlovento.",dato:"Está en la zona de laurisilva del norte de la isla.",f:"Cabildo de La Palma"}
+];
+const COORD={"Tajogaite (Cumbre Vieja)": "Wikipedia (cono)", "Volcán Teneguía": "Wikipedia (cono)", "Caldera de Taburiente": "Wikipedia (parque nacional)", "Observatorio del Roque de los Muchachos": "Wikipedia", "Santa Cruz de La Palma": "GeoNames (casco urbano)", "El Julan": "Rutas del Parque Cultural (aprox.)", "Parque Nacional de Garajonay": "UNESCO (centro del parque)", "San Sebastián de La Gomera": "GeoNames (casco urbano)", "Teide": "Wikipedia (cumbre)", "Volcán Chinyero": "INVOLCAN (Guía Geoturística)", "Observatorio del Teide": "IAC (coordenadas oficiales)", "San Cristóbal de La Laguna": "GeoNames", "Santa Cruz de Tenerife": "GeoNames (casco urbano)", "Drago milenario de Icod": "Wikipedia", "Parque Rural de Anaga": "Centro aproximado del macizo (sin fuente exacta)", "Cueva Pintada (Gáldar)": "GeoNames (Gáldar)", "Risco Caído y Montañas Sagradas": "Cabildo de Gran Canaria", "Roque Nublo": "Wikipedia", "Pico de las Nieves": "Wikipedia", "Vegueta": "GeoNames (Las Palmas)", "Dunas de Maspalomas": "Wikipedia", "Teguise": "GeoNames (casco urbano)", "Montañas del Fuego (Timanfaya)": "Ayto. Tinajo (Parque Nacional)", "Jameos del Agua": "Wikipedia / Sygic", "Cueva de los Verdes": "Wikipedia", "Betancuria": "Wikipedia", "Montaña de Tindaya": "Punto medio de dos fuentes (aprox.)", "Dunas de Corralejo": "Sygic (parque natural)", "Los Llanos de Aridane": "GeoNames (casco urbano)", "Los Tilos": "Viaducto de entrada (aprox.)", "Valverde": "GeoNames (casco urbano)", "Punta de Orchilla (Meridiano Cero)": "Wikipedia (faro)", "Pico de Malpaso": "Wikipedia", "Valle Gran Rey": "Wikipedia (municipio)", "Garachico": "GeoNames (casco urbano)", "Basílica de Candelaria": "GeoNames (Candelaria)", "Tejeda": "GeoNames (casco urbano)", "Teror": "GeoNames (casco urbano)", "Arrecife": "GeoNames (casco urbano)", "Puerto del Rosario": "GeoNames (casco urbano)", "Casa de los Coroneles (La Oliva)": "GeoNames (casco urbano)", "Isla de Lobos": "Sygic (Wikipedia)", "Tazacorte": "GeoNames (casco urbano)", "El Paso": "GeoNames (casco urbano)", "Mazo": "GeoNames (casco urbano)", "Fuencaliente": "GeoNames (casco urbano)", "Garafía": "GeoNames (casco urbano)", "Frontera (Valle de El Golfo)": "GeoNames (casco urbano)", "Hermigua": "GeoNames (casco urbano)", "Vallehermoso": "GeoNames (casco urbano)", "Agulo": "GeoNames (casco urbano)", "Vilaflor": "GeoNames (casco urbano)", "La Orotava": "GeoNames (casco urbano)", "Puerto de la Cruz": "GeoNames (casco urbano)", "Adeje": "GeoNames (casco urbano)", "Güímar": "GeoNames (casco urbano)", "Tacoronte": "GeoNames (casco urbano)", "Buenavista del Norte (Punta de Teno)": "GeoNames (casco urbano)", "Acantilados de Los Gigantes": "GeoNames (casco urbano)", "Santiago del Teide": "GeoNames (casco urbano)", "Telde": "GeoNames (casco urbano)", "Agüimes": "GeoNames (casco urbano)", "Arucas": "GeoNames (casco urbano)", "Artenara": "GeoNames (casco urbano)", "Agaete": "GeoNames (casco urbano)", "Haría": "GeoNames (casco urbano)", "Yaiza": "GeoNames (casco urbano)", "Pájara": "GeoNames (casco urbano)", "Tuineje": "GeoNames (casco urbano)", "El Cotillo": "GeoNames (casco urbano)", "Tinajo": "GeoNames (casco urbano)", "Tías": "GeoNames (casco urbano)", "San Bartolomé": "GeoNames (casco urbano)", "Nazaret": "GeoNames (casco urbano)", "Puerto del Carmen": "GeoNames (casco urbano)", "Costa Teguise": "GeoNames (casco urbano)", "Playa Blanca": "GeoNames (casco urbano)", "Antigua": "GeoNames (casco urbano)", "Corralejo": "GeoNames (casco urbano)", "Costa Calma": "GeoNames (casco urbano)", "Moya": "GeoNames (casco urbano)", "Mogán": "GeoNames (casco urbano)", "Firgas": "GeoNames (casco urbano)", "Valsequillo": "GeoNames (casco urbano)", "Santa Lucía de Tirajana": "GeoNames (casco urbano)", "Ingenio": "GeoNames (casco urbano)", "Santa Brígida": "GeoNames (casco urbano)", "Vega de San Mateo": "GeoNames (casco urbano)", "Valleseco": "GeoNames (casco urbano)", "La Aldea de San Nicolás": "GeoNames (casco urbano)", "San Bartolomé de Tirajana": "GeoNames (casco urbano)", "Puerto Rico": "GeoNames (casco urbano)", "Playa del Inglés": "GeoNames (casco urbano)", "Tegueste": "GeoNames (casco urbano)", "Los Silos": "GeoNames (casco urbano)", "Guía de Isora": "GeoNames (casco urbano)", "Arona (Los Cristianos)": "GeoNames (casco urbano)", "Fasnia": "GeoNames (casco urbano)", "Arafo": "GeoNames (casco urbano)", "Tanque": "GeoNames (casco urbano)", "La Victoria de Acentejo": "GeoNames (casco urbano)", "La Matanza de Acentejo": "GeoNames (casco urbano)", "La Guancha": "GeoNames (casco urbano)", "Granadilla de Abona": "GeoNames (casco urbano)", "San Miguel de Abona": "GeoNames (casco urbano)", "Santa Úrsula": "GeoNames (casco urbano)", "El Sauzal": "GeoNames (casco urbano)", "San Juan de la Rambla": "GeoNames (casco urbano)", "Los Realejos": "GeoNames (casco urbano)", "Alajeró": "GeoNames (casco urbano)", "Breña Alta": "GeoNames (casco urbano)", "Breña Baja": "GeoNames (casco urbano)", "Puntallana": "GeoNames (casco urbano)", "Tijarafe": "GeoNames (casco urbano)", "Puntagorda": "GeoNames (casco urbano)", "Barlovento": "GeoNames (casco urbano)"};
+POIS.forEach(p=>p.c=COORD[p.n]||'Aproximada, sin verificar');
+const ISLINFO={
+"La Palma":{t:"Isla joven y volcánica, con el mayor desnivel de Canarias entre la costa y su techo.",dato:"708 km². Techo: Roque de los Muchachos, 2.426 m. Conquista: 1493."},
+"El Hierro":{t:"La más pequeña y occidental, considerada el fin del mundo conocido en la Antigüedad.",dato:"269 km². Techo: Malpaso, 1.501 m. Conquista: 1405."},
+"La Gomera":{t:"Isla circular tallada por profundos barrancos, con el Silbo Gomero, lenguaje silbado Patrimonio Inmaterial de la UNESCO desde 2009.",dato:"369 km². Techo: Garajonay, 1.487 m."},
+"Tenerife":{t:"La mayor isla del archipiélago, dominada por el Teide.",dato:"2.034 km². Techo: Teide, 3.715 m. Conquista: 1496."},
+"Gran Canaria":{t:"Isla casi circular, con gran diversidad de climas y paisajes en poco espacio.",dato:"1.560 km². Techo: Morro de la Agujereada, 1.956 m. Conquista: 1483."},
+"Fuerteventura":{t:"La más antigua y árida, con las playas más extensas del archipiélago.",dato:"1.660 km². Techo: Pico de la Zarza, 807 m. Conquista: 1405."},
+"Lanzarote":{t:"Isla volcánica de paisaje lunar, modelada por las erupciones del siglo XVIII y por César Manrique.",dato:"846 km². Techo: Peñas del Chache, 671 m. Conquista: 1402."},
+"Canarias":{t:"Siete islas de origen volcánico en el Atlántico, a unos 100 km de África en su punto más cercano.",dato:"Unos 7.450 km². Población aborigen: guanches y otros pueblos, de origen amazigh."}
+};
+const COL={Volcán:"#e8552d",Yacimiento:"#e3b341",Naturaleza:"#5fbf6e",Patrimonio:"#4aa3df",Ciencia:"#c58cf0"};
+const ISL={"La Palma":[-17.87,28.65,60000],"El Hierro":[-18.0,27.75,50000],"La Gomera":[-17.2,28.1,50000],
+ "Tenerife":[-16.6,28.3,90000],"Gran Canaria":[-15.6,27.95,80000],"Fuerteventura":[-14.0,28.4,110000],
+ "Lanzarote":[-13.65,29.0,80000],"Canarias":[-15.9,28.3,700000]};
+
+/* ===== VISOR ===== */
+const $=id=>document.getElementById(id);
+const hasToken=TOKEN&&!TOKEN.startsWith("TU_");
+let viewer;
+if(hasToken){Cesium.Ion.defaultAccessToken=TOKEN;
+  viewer=new Cesium.Viewer("c",{terrain:Cesium.Terrain.fromWorldTerrain(),baseLayerPicker:false,geocoder:false,timeline:false,
+   animation:false,sceneModePicker:false,navigationHelpButton:false,homeButton:false,infoBox:false,selectionIndicator:false});
+}else{
+  viewer=new Cesium.Viewer("c",{baseLayer:new Cesium.ImageryLayer(new Cesium.OpenStreetMapImageryProvider({url:"https://tile.openstreetmap.org/"})),
+   baseLayerPicker:false,geocoder:false,timeline:false,animation:false,sceneModePicker:false,navigationHelpButton:false,
+   homeButton:false,infoBox:false,selectionIndicator:false});
+  $("status").textContent="Modo sin token: mapa plano. Añade tu token de Cesium Ion para activar el terreno 3D.";
+}
+const base=viewer.imageryLayers.get(0);
+viewer.scene.globe.enableLighting=false;
+viewer.scene.globe.baseColor=Cesium.Color.fromCssColorString("#1d3a34");
+viewer.scene.globe.depthTestAgainstTerrain=hasToken;
+if(hasToken)viewer.scene.verticalExaggeration=1.5;
+
+function fp(f){return new Promise(r=>f(r));}
+const fly=(k,dur=3)=>{const [lo,la,h]=ISL[k];
+  return fp(done=>viewer.camera.flyTo({destination:Cesium.Cartesian3.fromDegrees(lo,la-h*(hasToken?1:.364)/111320,h),
+   orientation:{heading:0,pitch:Cesium.Math.toRadians(hasToken?-45:-70)},duration:dur,complete:done,cancel:done}));};
+
+/* ===== MAPAS HISTÓRICOS ===== */
+const capas=MAPAS.filter(m=>m.url).map(m=>{
+  const l=viewer.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({url:m.url,maximumLevel:12}));
+  l.show=false;l.alpha=.7;return {l,m};});
+
+/* ===== PUNTOS ===== */
+const ents=POIS.map(p=>{
+  const e=viewer.entities.add({
+    position:Cesium.Cartesian3.fromDegrees(p.lon,p.lat),
+    point:{pixelSize:12,color:Cesium.Color.fromCssColorString(COL[p.tipo]),outlineColor:Cesium.Color.WHITE,outlineWidth:2,
+     heightReference:Cesium.HeightReference.CLAMP_TO_GROUND,disableDepthTestDistance:Number.POSITIVE_INFINITY},
+    label:{text:p.n,font:"14px Georgia",fillColor:Cesium.Color.WHITE,outlineColor:Cesium.Color.BLACK,outlineWidth:3,
+     style:Cesium.LabelStyle.FILL_AND_OUTLINE,pixelOffset:new Cesium.Cartesian2(0,-18),
+     heightReference:Cesium.HeightReference.CLAMP_TO_GROUND,
+     distanceDisplayCondition:new Cesium.DistanceDisplayCondition(0,220000),disableDepthTestDistance:Number.POSITIVE_INFINITY}});
+  e._p=p;return e;});
+
+/* ===== RECONSTRUCCIONES 3D ESQUEMÁTICAS (aldea aborigen junto a Gáldar, antes de 1500) ===== */
+const recon=[];
+(function(){
+  const cx=-15.6510,cy=28.1470,M=111320,mk=(dx,dy)=>Cesium.Cartesian3.fromDegrees(cx+dx/(M*Math.cos(cy*Math.PI/180)),cy+dy/M);
+  const piedra=Cesium.Color.fromCssColorString("#8a7a63"),paja=Cesium.Color.fromCssColorString("#b79a5b");
+  for(let i=0;i<12;i++){const a=i/12*2*Math.PI;
+    recon.push(viewer.entities.add({position:mk(Math.cos(a)*14,Math.sin(a)*14),
+      cylinder:{length:1.4,topRadius:.7,bottomRadius:.9,material:piedra,heightReference:Cesium.HeightReference.CLAMP_TO_GROUND}}));}
+  [[-35,10],[-40,-12],[35,22],[42,-6],[0,-38]].forEach(([x,y])=>
+    recon.push(viewer.entities.add({position:mk(x,y),ellipsoid:{radii:new Cesium.Cartesian3(5,5,2.6),material:paja,
+      heightReference:Cesium.HeightReference.CLAMP_TO_GROUND}})));
+  const lab=viewer.entities.add({position:mk(0,0),label:{text:"Reconstrucción esquemática: tagoror y viviendas",font:"13px Georgia",
+    fillColor:Cesium.Color.WHITE,outlineColor:Cesium.Color.BLACK,outlineWidth:3,style:Cesium.LabelStyle.FILL_AND_OUTLINE,
+    pixelOffset:new Cesium.Cartesian2(0,-30),distanceDisplayCondition:new Cesium.DistanceDisplayCondition(0,3000),
+    disableDepthTestDistance:Number.POSITIVE_INFINITY,heightReference:Cesium.HeightReference.CLAMP_TO_GROUND}});
+  recon.push(lab);
+})();
+
+/* ===== ÉPOCA Y FILTROS ===== */
+const activos=new Set(Object.keys(COL));
+const eraName=y=>y>=2020?"Hoy":y<1496?"Conquista, c. "+y:y<1700?"Siglos XVI-XVII, "+y:y<1800?"Siglo XVIII, "+y:y<1900?"Siglo XIX, "+y:"Siglo XX, "+y;
+function aplicar(y){
+  y=+y;$("yv").textContent=y;$("era").textContent=eraName(y);$("year").value=y;
+  ents.forEach(e=>e.show=y>=e._p.d&&y<=e._p.h&&activos.has(e._p.tipo));
+  recon.forEach(e=>e.show=y<1500);
+  capas.forEach(({l,m})=>l.show=y>=m.desde&&y<=m.hasta);
+  const t=Math.max(0,Math.min(1,(2026-y)/600));
+  base.saturation=1-.75*t;base.hue=.08*t;base.brightness=1-.12*t;base.contrast=1+.1*t; // tono de archivo
+  document.querySelectorAll("#eras button").forEach(b=>b.setAttribute("aria-pressed",String(+b.dataset.y===y)));
+}
+$("year").oninput=e=>aplicar(e.target.value);
+document.querySelectorAll("#eras button").forEach(b=>b.onclick=()=>aplicar(b.dataset.y));
+Object.keys(COL).forEach(k=>{const l=document.createElement("label");l.className="chk";
+  l.innerHTML=`<input type="checkbox" checked><span class="dot" style="background:${COL[k]}"></span>`;
+  l.append(k);l.firstChild.onchange=ev=>{ev.target.checked?activos.add(k):activos.delete(k);aplicar($("year").value);};
+  $("types").appendChild(l);});
+Object.keys(ISL).forEach(k=>{const b=document.createElement("button");b.textContent=k;b.onclick=()=>{stopTour();fly(k);const x=ISLINFO[k];ficha({n:k,t:x.t,dato:x.dato});};$("isl").appendChild(b);});
+POIS.forEach(p=>{const o=document.createElement("option");o.value=p.n;$("names").appendChild(o);});
+
+/* ===== FICHAS ===== */
+function ficha(p){
+  const i=$("info");i.style.display="block";i.innerHTML="<h2></h2><div></div><div class='dato'></div><small></small>";
+  i.querySelector("h2").textContent=p.is?p.n+" · "+p.is:p.n;
+  i.querySelector("div").textContent=p.t;
+  i.querySelector(".dato").textContent=p.dato||"";
+  i.querySelector("small").textContent=(p.tipo?p.tipo+" · ":"")+(p.f?"Fuente: "+p.f:"")+(p.c?" · Coordenada: "+p.c:"");}
+const RANGO={"Teide":17000,"Caldera de Taburiente":16000,"Montañas del Fuego (Timanfaya)":14000,"Parque Rural de Anaga":18000,
+"Parque Nacional de Garajonay":12000,"Dunas de Maspalomas":6000,"Dunas de Corralejo":9000,"La Geria":9000,"Macizo de Teno (Masca)":9000,
+"Playa de Cofete":9000,"Cueva Pintada (Gáldar)":900,"Volcán submarino Tagoro":9000,"Roque Nublo":5000,"Montaña de Tindaya":6000,"El Sabinar":6000};
+const rango=p=>RANGO[p.n]||({Patrimonio:3500,Yacimiento:3000,Ciencia:4500,Volcán:9000,Naturaleza:9000}[p.tipo]||5000);
+async function objetivo(p){let h=0;
+  if(hasToken){try{const [c]=await Cesium.sampleTerrainMostDetailed(viewer.terrainProvider,[Cesium.Cartographic.fromDegrees(p.lon,p.lat)]);h=c.height||0;}catch(_){}}
+  return Cesium.Cartesian3.fromDegrees(p.lon,p.lat,h);}
+function mira(c,p,grados,dur){
+  return fp(done=>viewer.camera.flyToBoundingSphere(new Cesium.BoundingSphere(c,100),
+   {offset:new Cesium.HeadingPitchRange(Cesium.Math.toRadians(grados),Cesium.Math.toRadians(hasToken?-35:-70),rango(p)),
+    duration:dur,complete:done,cancel:done}));}
+async function ir(e,dur=3){const p=e._p;ficha(p);const c=await objetivo(p);await mira(c,p,15,dur);return c;}
+new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas).setInputAction(c=>{
+  const o=viewer.scene.pick(c.position);if(o&&o.id&&o.id._p){stopTour();ir(o.id);}},Cesium.ScreenSpaceEventType.LEFT_CLICK);
+$("q").onchange=e=>{const x=ents.find(z=>z._p.n.toLowerCase()===e.target.value.toLowerCase());
+  if(x){stopTour();aplicar(Math.max(+$("year").value,x._p.d));ir(x);}};
+$("min").onclick=()=>{const m=$("panel").classList.toggle("min");$("min").textContent=m?"+":"–";};
+
+/* ===== RECORRIDO GUIADO ===== */
+let tourOn=false;const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const cap=t=>{$("caption").style.display=t?"block":"none";$("caption").textContent=t||"";};
+function stopTour(){tourOn=false;cap("");viewer.camera.cancelFlight();}
+const ORDEN=["La Palma","El Hierro","La Gomera","Tenerife","Gran Canaria","Lanzarote","Fuerteventura"];
+async function tourCompleto(){
+  tourOn=true;
+  for(const k of ORDEN){
+    if(!tourOn)break;
+    aplicar(2026);cap(k+": "+ISLINFO[k].t);ficha({n:k,t:ISLINFO[k].t,dato:ISLINFO[k].dato});
+    await fly(k,4);if(!tourOn)break;await sleep(4500);
+    for(const e of ents.filter(z=>z._p.is===k)){
+      if(!tourOn)break;const p=e._p;
+      aplicar(Math.max(p.d,1494));cap(p.n+": "+(p.dato||p.t));
+      const c=await ir(e,3.5);if(!tourOn)break;
+      await mira(c,p,115,6);}
+  }
+  stopTour();
+}
+$("tourAll").onclick=()=>{if(!tourOn)tourCompleto();};
+$("stop").onclick=stopTour;
+
+aplicar(2026);fly("La Palma");
+</script>
+</body></html>

@@ -1,0 +1,2557 @@
+{
+ "type": "FeatureCollection",
+ "features": [
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.86611,
+     28.61278
+    ]
+   },
+   "properties": {
+    "nombre": "Tajogaite (Cumbre Vieja)",
+    "isla": "La Palma",
+    "tipo": "Volcán",
+    "desde": 2021,
+    "hasta": 2026,
+    "descripcion": "Erupción del 19 de septiembre al 13 de diciembre de 2021. Las coladas alcanzaron el mar, crearon nuevos deltas lávicos y destruyeron más de 1.600 edificaciones en el valle de Aridane.",
+    "dato": "85 días: la erupción histórica más larga de La Palma. El cono mide unos 200 m de altura.",
+    "fuente_dato": "IGN / INVOLCAN",
+    "fuente_coordenada": "Wikipedia (cono)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.85194,
+     28.47167
+    ]
+   },
+   "properties": {
+    "nombre": "Volcán Teneguía",
+    "isla": "La Palma",
+    "tipo": "Volcán",
+    "desde": 1971,
+    "hasta": 2026,
+    "descripcion": "Erupción de 1971 en Fuencaliente, entre octubre y noviembre. Fue la última de La Palma antes de la de 2021.",
+    "dato": "Su cono alcanza unos 428 m de altitud.",
+    "fuente_dato": "IGN / Cabildo de La Palma",
+    "fuente_coordenada": "Wikipedia (cono)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.867,
+     28.717
+    ]
+   },
+   "properties": {
+    "nombre": "Caldera de Taburiente",
+    "isla": "La Palma",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Gran depresión de origen erosivo y volcánico, declarada Parque Nacional en 1954. Era el corazón del cantón aborigen de Aceró.",
+    "dato": "Entre 8 y 10 km de diámetro.",
+    "fuente_dato": "Parque Nacional de la Caldera de Taburiente",
+    "fuente_coordenada": "Wikipedia (parque nacional)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.8947,
+     28.7636
+    ]
+   },
+   "properties": {
+    "nombre": "Observatorio del Roque de los Muchachos",
+    "isla": "La Palma",
+    "tipo": "Ciencia",
+    "desde": 1985,
+    "hasta": 2026,
+    "descripcion": "Uno de los mejores cielos del hemisferio norte, inaugurado en 1985. Alberga el Gran Telescopio Canarias, inaugurado en 2009.",
+    "dato": "El GTC tiene un espejo de 10,4 m de diámetro.",
+    "fuente_dato": "IAC",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.76421,
+     28.68351
+    ]
+   },
+   "properties": {
+    "nombre": "Santa Cruz de La Palma",
+    "isla": "La Palma",
+    "tipo": "Patrimonio",
+    "desde": 1493,
+    "hasta": 2026,
+    "descripcion": "Fundada tras la conquista de la isla en 1493. Fue uno de los grandes puertos de la ruta atlántica con América en el siglo XVI.",
+    "dato": "Alonso Fernández de Lugo completó la conquista de La Palma en 1493.",
+    "fuente_dato": "Ayto. Santa Cruz de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -18.059,
+     27.708
+    ]
+   },
+   "properties": {
+    "nombre": "El Julan",
+    "isla": "El Hierro",
+    "tipo": "Yacimiento",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Santuario bimbache con numerosos grabados rupestres, entre ellos alfabetiformes, y estructuras rituales.",
+    "dato": "Hero era el nombre aborigen de El Hierro.",
+    "fuente_dato": "Cabildo de El Hierro",
+    "fuente_coordenada": "Rutas del Parque Cultural (aprox.)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.23722,
+     28.12625
+    ]
+   },
+   "properties": {
+    "nombre": "Parque Nacional de Garajonay",
+    "isla": "La Gomera",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Uno de los mayores bosques de laurisilva del planeta, reliquia de una vegetación del Terciario que cubría el sur de Europa.",
+    "dato": "Patrimonio Mundial desde 1986. Su techo es el Alto de Garajonay, de 1.487 m.",
+    "fuente_dato": "UNESCO",
+    "fuente_coordenada": "UNESCO (centro del parque)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.11331,
+     28.09163
+    ]
+   },
+   "properties": {
+    "nombre": "San Sebastián de La Gomera",
+    "isla": "La Gomera",
+    "tipo": "Patrimonio",
+    "desde": 1450,
+    "hasta": 2026,
+    "descripcion": "Villa histórica con la Torre del Conde del siglo XV. Cristóbal Colón hizo escala en la isla en 1492 antes de cruzar el Atlántico.",
+    "dato": "Colón volvió a Gomera en sus siguientes viajes.",
+    "fuente_dato": "Cabildo de La Gomera",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.63944,
+     28.27306
+    ]
+   },
+   "properties": {
+    "nombre": "Teide",
+    "isla": "Tenerife",
+    "tipo": "Volcán",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Estratovolcán sagrado para los guanches, que lo llamaban Echeyde y lo consideraban morada de Guayota. Parque Nacional desde 1954.",
+    "dato": "3.715 m: pico más alto de España. Patrimonio Mundial desde 2007.",
+    "fuente_dato": "Parque Nacional del Teide / UNESCO",
+    "fuente_coordenada": "Wikipedia (cumbre)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.756923,
+     28.294625
+    ]
+   },
+   "properties": {
+    "nombre": "Volcán Chinyero",
+    "isla": "Tenerife",
+    "tipo": "Volcán",
+    "desde": 1909,
+    "hasta": 2026,
+    "descripcion": "Erupción de noviembre de 1909 en el noroeste de Tenerife, la última registrada en la isla.",
+    "dato": "Duró diez días.",
+    "fuente_dato": "IGN / Cabildo de Tenerife",
+    "fuente_coordenada": "INVOLCAN (Guía Geoturística)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.51056,
+     28.30111
+    ]
+   },
+   "properties": {
+    "nombre": "Observatorio del Teide",
+    "isla": "Tenerife",
+    "tipo": "Ciencia",
+    "desde": 1964,
+    "hasta": 2026,
+    "descripcion": "Observatorio de Izaña, con telescopios solares y nocturnos. Es uno de los referentes mundiales en astrofísica solar.",
+    "dato": "Está a 2.390 m y funciona desde 1964. En 1979 nació aquí la heliosismología.",
+    "fuente_dato": "IAC",
+    "fuente_coordenada": "IAC (coordenadas oficiales)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.3201,
+     28.4853
+    ]
+   },
+   "properties": {
+    "nombre": "San Cristóbal de La Laguna",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1496,
+    "hasta": 2026,
+    "descripcion": "Ciudad fundada tras la conquista de Tenerife. Su trazado civil, sin murallas, sirvió de modelo en ciudades hispanoamericanas.",
+    "dato": "Patrimonio Mundial desde 1999.",
+    "fuente_dato": "UNESCO",
+    "fuente_coordenada": "GeoNames",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.2546,
+     28.4682
+    ]
+   },
+   "properties": {
+    "nombre": "Santa Cruz de Tenerife",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1494,
+    "hasta": 2026,
+    "descripcion": "Nació del desembarco de Alonso Fernández de Lugo en Añazo el 3 de mayo de 1494. En 1797 repelió el ataque de Nelson.",
+    "dato": "En 1797 Nelson fue derrotado aquí y perdió el brazo derecho.",
+    "fuente_dato": "Ayto. Santa Cruz de Tenerife",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.7222,
+     28.3666
+    ]
+   },
+   "properties": {
+    "nombre": "Drago milenario de Icod",
+    "isla": "Tenerife",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Ejemplar emblemático de Dracaena draco, especie símbolo de la flora canaria, cuya resina roja, la sangre de drago, usaban los aborígenes.",
+    "dato": "Mide unos 21 m de altura y aparecía en los billetes de 1.000 pesetas.",
+    "fuente_dato": "Ayto. Icod de los Vinos",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.25,
+     28.55
+    ]
+   },
+   "properties": {
+    "nombre": "Parque Rural de Anaga",
+    "isla": "Tenerife",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Macizo de laurisilva con gran concentración de especies endémicas, entre ellas insectos y plantas exclusivas de esta zona.",
+    "dato": "Reserva de la Biosfera desde 2015.",
+    "fuente_dato": "UNESCO",
+    "fuente_coordenada": "Centro aproximado del macizo (sin fuente exacta)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.6502,
+     28.14701
+    ]
+   },
+   "properties": {
+    "nombre": "Cueva Pintada (Gáldar)",
+    "isla": "Gran Canaria",
+    "tipo": "Yacimiento",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Yacimiento aborigen con pinturas geométricas en rojo, negro y blanco, junto a Gáldar, sede del guanartemato.",
+    "dato": "Tamarán era el nombre aborigen de Gran Canaria.",
+    "fuente_dato": "Museo y Parque Arqueológico Cueva Pintada",
+    "fuente_coordenada": "GeoNames (Gáldar)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.6486,
+     28.0203
+    ]
+   },
+   "properties": {
+    "nombre": "Risco Caído y Montañas Sagradas",
+    "isla": "Gran Canaria",
+    "tipo": "Yacimiento",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Conjunto de santuarios, graneros y cuevas de la cultura aborigen en la cumbre. Incluye el Almogarén de Risco Caído, con observación astronómica.",
+    "dato": "Patrimonio Mundial desde 2019.",
+    "fuente_dato": "UNESCO",
+    "fuente_coordenada": "Cabildo de Gran Canaria",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.6125,
+     27.97083
+    ]
+   },
+   "properties": {
+    "nombre": "Roque Nublo",
+    "isla": "Gran Canaria",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Monolito de origen volcánico venerado por los aborígenes, símbolo de la isla.",
+    "dato": "Mide unos 80 m de altura.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.57167,
+     27.96194
+    ]
+   },
+   "properties": {
+    "nombre": "Pico de las Nieves",
+    "isla": "Gran Canaria",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Cumbre de Gran Canaria, con vistas al Teide en días claros. Tradicionalmente se consideró el techo de la isla.",
+    "dato": "Mide 1.949 m. El vecino Morro de la Agujereada alcanza 1.956 m según el IGN.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.4153,
+     28.1018
+    ]
+   },
+   "properties": {
+    "nombre": "Vegueta",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1478,
+    "hasta": 2026,
+    "descripcion": "Barrio fundacional de Las Palmas, nacido en 1478 durante la conquista. Conserva la catedral de Santa Ana y la casa de Colón.",
+    "dato": "Gran Canaria fue conquistada en 1483.",
+    "fuente_dato": "Ayto. Las Palmas de G.C.",
+    "fuente_coordenada": "GeoNames (Las Palmas)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.582,
+     27.741
+    ]
+   },
+   "properties": {
+    "nombre": "Dunas de Maspalomas",
+    "isla": "Gran Canaria",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Campo de dunas, palmeral y charca litoral declarado Reserva Natural Especial. Sus arenas se renuevan por el viento.",
+    "dato": "Ocupa unas 400 ha.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.56397,
+     29.06049
+    ]
+   },
+   "properties": {
+    "nombre": "Teguise",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1418,
+    "hasta": 2026,
+    "descripcion": "Antigua capital de Lanzarote, castigada por ataques piratas. Su caserío histórico se conserva casi intacto.",
+    "dato": "Fue capital de la isla hasta 1852.",
+    "fuente_dato": "Ayto. Teguise",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.7542,
+     29.00625
+    ]
+   },
+   "properties": {
+    "nombre": "Montañas del Fuego (Timanfaya)",
+    "isla": "Lanzarote",
+    "tipo": "Volcán",
+    "desde": 1730,
+    "hasta": 2026,
+    "descripcion": "Erupciones de 1730 a 1736 que sepultaron cerca de un cuarto de la isla y cambiaron el modo de vida de la población.",
+    "dato": "Seis años de actividad volcánica ininterrumpida.",
+    "fuente_dato": "Parque Nacional de Timanfaya",
+    "fuente_coordenada": "Ayto. Tinajo (Parque Nacional)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.43162,
+     29.15742
+    ]
+   },
+   "properties": {
+    "nombre": "Jameos del Agua",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1966,
+    "hasta": 2026,
+    "descripcion": "Tubo volcánico del volcán de la Corona intervenido por César Manrique. Las obras comenzaron en 1966 y la estructura general se completó en 1977.",
+    "dato": "Vive aquí el cangrejo ciego, especie endémica de unos 1 cm.",
+    "fuente_dato": "Centros de Arte, Cultura y Turismo",
+    "fuente_coordenada": "Wikipedia / Sygic",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.43889,
+     29.16111
+    ]
+   },
+   "properties": {
+    "nombre": "Cueva de los Verdes",
+    "isla": "Lanzarote",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Tramo de un gran tubo volcánico formado por la erupción del volcán de la Corona, usado como refugio por la población ante los piratas.",
+    "dato": "El tubo completo supera los 6 km.",
+    "fuente_dato": "Centros de Arte, Cultura y Turismo",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -14.05556,
+     28.425
+    ]
+   },
+   "properties": {
+    "nombre": "Betancuria",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1405,
+    "hasta": 2026,
+    "descripcion": "Primera capital de Fuerteventura, fundada en 1404 por Jean de Béthencourt y Gadifer de la Salle en un valle protegido de los piratas, aunque fue saqueada en 1593.",
+    "dato": "Fue capital de Fuerteventura hasta 1834, cuando pasó a Antigua.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.971,
+     28.59
+    ]
+   },
+   "properties": {
+    "nombre": "Montaña de Tindaya",
+    "isla": "Fuerteventura",
+    "tipo": "Yacimiento",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Montaña sagrada de los majos, con cientos de grabados en forma de pies, los podomorfos, orientados hacia el sol del solsticio.",
+    "dato": "Es Monumento Natural.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "Punto medio de dos fuentes (aprox.)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.84658,
+     28.69431
+    ]
+   },
+   "properties": {
+    "nombre": "Dunas de Corralejo",
+    "isla": "Fuerteventura",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Campo de dunas de arena organógena en el norte de la isla, protegido como Parque Natural.",
+    "dato": "Fuerteventura es Reserva de la Biosfera desde 2009.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "Sygic (parque natural)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.91821,
+     28.65851
+    ]
+   },
+   "properties": {
+    "nombre": "Los Llanos de Aridane",
+    "isla": "La Palma",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Cabecera del valle de Aridane, centro agrícola del plátano y una de las zonas más afectadas por la erupción de 2021.",
+    "dato": "Es el municipio más poblado de La Palma.",
+    "fuente_dato": "Ayto. Los Llanos de Aridane",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.771,
+     28.7977
+    ]
+   },
+   "properties": {
+    "nombre": "Los Tilos",
+    "isla": "La Palma",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Bosque de laurisilva en San Andrés y Sauces, uno de los mejor conservados de la isla.",
+    "dato": "Reserva de la Biosfera desde 1983; toda La Palma lo es desde 2002.",
+    "fuente_dato": "UNESCO",
+    "fuente_coordenada": "Viaducto de entrada (aprox.)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.91578,
+     27.80628
+    ]
+   },
+   "properties": {
+    "nombre": "Valverde",
+    "isla": "El Hierro",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Capital de El Hierro y la única capital insular de Canarias que no está en la costa.",
+    "dato": "Se sitúa a unos 570 m de altitud.",
+    "fuente_dato": "Cabildo de El Hierro",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -18.1475,
+     27.7067
+    ]
+   },
+   "properties": {
+    "nombre": "Punta de Orchilla (Meridiano Cero)",
+    "isla": "El Hierro",
+    "tipo": "Patrimonio",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Extremo occidental de la isla, que durante siglos marcó el meridiano de referencia del mundo conocido.",
+    "dato": "Se usó como meridiano de referencia hasta 1884, cuando se adoptó Greenwich.",
+    "fuente_dato": "Cabildo de El Hierro",
+    "fuente_coordenada": "Wikipedia (faro)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -18.0406,
+     27.7294
+    ]
+   },
+   "properties": {
+    "nombre": "Pico de Malpaso",
+    "isla": "El Hierro",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Cumbre de la isla, en el borde del arco de El Golfo, con vistas a todo el territorio herreño.",
+    "dato": "1.501 m: el punto más alto de El Hierro.",
+    "fuente_dato": "IGN",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.333,
+     28.1
+    ]
+   },
+   "properties": {
+    "nombre": "Valle Gran Rey",
+    "isla": "La Gomera",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Profundo barranco del oeste de La Gomera, con laderas aterrazadas por cultivos tradicionales.",
+    "dato": "Sus bancales de piedra seca se cultivaron durante siglos.",
+    "fuente_dato": "Cabildo de La Gomera",
+    "fuente_coordenada": "Wikipedia (municipio)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.76342,
+     28.37365
+    ]
+   },
+   "properties": {
+    "nombre": "Garachico",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Fue el puerto principal de Tenerife hasta la erupción de Trevejo, que lo sepultó y dio origen a las piscinas naturales actuales.",
+    "dato": "La erupción de 1706 destruyó su puerto.",
+    "fuente_dato": "Ayto. Garachico",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.37268,
+     28.3548
+    ]
+   },
+   "properties": {
+    "nombre": "Basílica de Candelaria",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Santuario de la Virgen de Candelaria, patrona de Canarias, cuya imagen según la tradición veneraban ya los guanches.",
+    "dato": "Los guanches la llamaban Chaxiraxi.",
+    "fuente_dato": "Ayto. Candelaria",
+    "fuente_coordenada": "GeoNames (Candelaria)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.61543,
+     27.99508
+    ]
+   },
+   "properties": {
+    "nombre": "Tejeda",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo de cumbre en el borde de la Caldera de Tejeda, rodeado de almendros y cultivos en terraza.",
+    "dato": "Está dentro del paisaje cultural Patrimonio Mundial desde 2019.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.54909,
+     28.06062
+    ]
+   },
+   "properties": {
+    "nombre": "Teror",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Villa histórica con la Basílica de Nuestra Señora del Pino, patrona de Gran Canaria, y balcones canarios de madera.",
+    "dato": "Su casco histórico es Bien de Interés Cultural.",
+    "fuente_dato": "Ayto. Teror",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.5477,
+     28.963
+    ]
+   },
+   "properties": {
+    "nombre": "Arrecife",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1590,
+    "hasta": 2026,
+    "descripcion": "Capital de Lanzarote, defendida desde finales del siglo XVI por castillos frente a los ataques piratas.",
+    "dato": "Es la capital de la isla desde 1852.",
+    "fuente_dato": "Ayto. Arrecife",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.86272,
+     28.50038
+    ]
+   },
+   "properties": {
+    "nombre": "Puerto del Rosario",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1860,
+    "hasta": 2026,
+    "descripcion": "Capital insular de Fuerteventura, antes llamada Puerto de Cabras, por su función como puerto de la isla.",
+    "dato": "Cambió su nombre en 1956.",
+    "fuente_dato": "Ayto. Puerto del Rosario",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.92912,
+     28.61052
+    ]
+   },
+   "properties": {
+    "nombre": "Casa de los Coroneles (La Oliva)",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1700,
+    "hasta": 2026,
+    "descripcion": "Gran casa del siglo XVIII asociada a los coroneles que ejercieron el poder militar en Fuerteventura.",
+    "dato": "Hoy es un espacio cultural.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.82441,
+     28.75118
+    ]
+   },
+   "properties": {
+    "nombre": "Isla de Lobos",
+    "isla": "Fuerteventura",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Islote volcánico protegido como Parque Natural, con playas, dunas y el faro de Martiño.",
+    "dato": "Se llega en barco desde Corralejo.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "Sygic (Wikipedia)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.93394,
+     28.64186
+    ]
+   },
+   "properties": {
+    "nombre": "Tazacorte",
+    "isla": "La Palma",
+    "tipo": "Patrimonio",
+    "desde": 1492,
+    "hasta": 2026,
+    "descripcion": "Por aquí desembarcó Alonso Fernández de Lugo en 1492 para iniciar la conquista de La Palma, que concluyó en 1493.",
+    "dato": "Hoy es uno de los municipios plataneros del valle de Aridane.",
+    "fuente_dato": "Ayto. Tazacorte",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.88274,
+     28.65007
+    ]
+   },
+   "properties": {
+    "nombre": "El Paso",
+    "isla": "La Palma",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del centro de la isla, con acceso a la Caldera de Taburiente. El cono de Tajogaite se formó en su término.",
+    "dato": "Mantiene la artesanía tradicional de la seda.",
+    "fuente_dato": "Ayto. El Paso",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.77801,
+     28.60906
+    ]
+   },
+   "properties": {
+    "nombre": "Mazo",
+    "isla": "La Palma",
+    "tipo": "Yacimiento",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Municipio con alfarería tradicional hecha a mano. En su término está la Cueva de Belmaco, santuario benahoarita con grabados de espirales.",
+    "dato": "Benahoare era el nombre aborigen de La Palma.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.84529,
+     28.49236
+    ]
+   },
+   "properties": {
+    "nombre": "Fuencaliente",
+    "isla": "La Palma",
+    "tipo": "Naturaleza",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio más meridional de La Palma, con viñedos sobre suelo volcánico, salinas marinas y los volcanes San Antonio y Teneguía.",
+    "dato": "Teneguía (1971) fue la última erupción antes de Tajogaite.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.93333,
+     28.81667
+    ]
+   },
+   "properties": {
+    "nombre": "Garafía",
+    "isla": "La Palma",
+    "tipo": "Yacimiento",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Municipio del noroeste con los grabados rupestres de La Zarza y La Zarcita, otro gran conjunto benahoarita de espirales y círculos.",
+    "dato": "La Zarza y La Zarcita forman un parque cultural.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -18.00367,
+     27.75404
+    ]
+   },
+   "properties": {
+    "nombre": "Frontera (Valle de El Golfo)",
+    "isla": "El Hierro",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Cabecera del Valle de El Golfo, un enorme anfiteatro abierto al mar por un gran deslizamiento de ladera hace miles de años.",
+    "dato": "El escarpe del Golfo alcanza unos 1.000 m de altura.",
+    "fuente_dato": "Cabildo de El Hierro",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.19051,
+     28.16766
+    ]
+   },
+   "properties": {
+    "nombre": "Hermigua",
+    "isla": "La Gomera",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Valle verde del norte de La Gomera, con terrazas de plataneras y el Convento de Santo Domingo.",
+    "dato": "El convento es del siglo XVII.",
+    "fuente_dato": "Cabildo de La Gomera",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.2666,
+     28.1794
+    ]
+   },
+   "properties": {
+    "nombre": "Vallehermoso",
+    "isla": "La Gomera",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Municipio del norte de La Gomera, dominado por roques volcánicos como el Roque Cano.",
+    "dato": "Los roques son restos de antiguos conductos volcánicos.",
+    "fuente_dato": "Cabildo de La Gomera",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.19678,
+     28.18778
+    ]
+   },
+   "properties": {
+    "nombre": "Agulo",
+    "isla": "La Gomera",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo colgado sobre un acantilado, con vistas al Teide y a la costa norte de la isla.",
+    "dato": "La Gomera es Reserva de la Biosfera desde 2012.",
+    "fuente_dato": "Cabildo de La Gomera",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.63592,
+     28.15623
+    ]
+   },
+   "properties": {
+    "nombre": "Vilaflor",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo de montaña a las puertas del Parque Nacional del Teide, rodeado de pinar canario.",
+    "dato": "Está a unos 1.400 m, entre los municipios más altos de España.",
+    "fuente_dato": "Cabildo de Tenerife",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.52309,
+     28.39076
+    ]
+   },
+   "properties": {
+    "nombre": "La Orotava",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1496,
+    "hasta": 2026,
+    "descripcion": "Villa histórica del valle de Taoro con casas de balcones de madera. Fue territorio del mencey de Taoro, el mayor de los menceyatos.",
+    "dato": "Sus alfombras del Corpus Christi se hacen con arena volcánica y flores.",
+    "fuente_dato": "Ayto. La Orotava",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.55085,
+     28.41686
+    ]
+   },
+   "properties": {
+    "nombre": "Puerto de la Cruz",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Puerto histórico del valle de La Orotava y una de las primeras ciudades turísticas de Canarias.",
+    "dato": "El Jardín Botánico se creó aquí en 1788 por orden de Carlos III.",
+    "fuente_dato": "Ayto. Puerto de la Cruz",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.726,
+     28.12271
+    ]
+   },
+   "properties": {
+    "nombre": "Adeje",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Sede de uno de los nueve menceyatos guanches de Tenerife. Conserva la Casa Fuerte, edificio del siglo XVI.",
+    "dato": "Su barranco del Infierno es una de las rutas más conocidas del sur.",
+    "fuente_dato": "Ayto. Adeje",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.4127,
+     28.3112
+    ]
+   },
+   "properties": {
+    "nombre": "Güímar",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Valle del sureste de Tenerife, antiguo menceyato y escenario de la tradición de la aparición de la Virgen de Candelaria.",
+    "dato": "Fue sede de uno de los nueve menceyatos guanches.",
+    "fuente_dato": "Ayto. Güímar",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.41016,
+     28.47688
+    ]
+   },
+   "properties": {
+    "nombre": "Tacoronte",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio vitivinícola del norte de Tenerife, con viñedos en pequeñas parcelas de ladera.",
+    "dato": "Tacoronte-Acentejo fue la primera Denominación de Origen de Canarias, en 1992.",
+    "fuente_dato": "Ayto. Tacoronte",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.8609,
+     28.3745
+    ]
+   },
+   "properties": {
+    "nombre": "Buenavista del Norte (Punta de Teno)",
+    "isla": "Tenerife",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Municipio del extremo noroeste, junto al macizo de Teno y la Punta de Teno con su faro.",
+    "dato": "Masca pertenece a este municipio.",
+    "fuente_dato": "Ayto. Buenavista del Norte",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.8415,
+     28.2436
+    ]
+   },
+   "properties": {
+    "nombre": "Acantilados de Los Gigantes",
+    "isla": "Tenerife",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Muro vertical de roca volcánica que cae directamente al Atlántico en la costa oeste de Tenerife.",
+    "dato": "Los acantilados alcanzan unos 600 m de altura.",
+    "fuente_dato": "Cabildo de Tenerife",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.81618,
+     28.294
+    ]
+   },
+   "properties": {
+    "nombre": "Santiago del Teide",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del oeste de Tenerife, al pie del Teide y del volcán Chinyero.",
+    "dato": "Su término incluye el volcán Chinyero, de 1909.",
+    "fuente_dato": "Cabildo de Tenerife",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.41919,
+     27.99243
+    ]
+   },
+   "properties": {
+    "nombre": "Telde",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Una de las dos grandes capitales aborígenes de Gran Canaria junto a Gáldar. Conserva barrios históricos como San Juan y San Francisco.",
+    "dato": "Gran Canaria estaba dividida en dos guanartematos: Telde y Gáldar.",
+    "fuente_dato": "Ayto. Telde",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.446,
+     27.9053
+    ]
+   },
+   "properties": {
+    "nombre": "Agüimes",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Villa histórica del sureste de Gran Canaria, con calles empedradas y la iglesia de San Sebastián.",
+    "dato": "Fue señorío de los obispos de Canarias.",
+    "fuente_dato": "Ayto. Agüimes",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.52325,
+     28.11983
+    ]
+   },
+   "properties": {
+    "nombre": "Arucas",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Ciudad del norte de Gran Canaria, conocida por la iglesia neogótica de San Juan Bautista, construida en cantería azul, y por su ron.",
+    "dato": "La iglesia comenzó a construirse en 1909.",
+    "fuente_dato": "Ayto. Arucas",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.64693,
+     28.02055
+    ]
+   },
+   "properties": {
+    "nombre": "Artenara",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Pueblo de cumbre con numerosas casas cueva excavadas en la roca, tradición que se remonta a la época aborigen.",
+    "dato": "Está a más de 1.200 m: es el municipio más alto de Gran Canaria.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.69998,
+     28.10023
+    ]
+   },
+   "properties": {
+    "nombre": "Agaete",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Valle y puerto de Las Nieves, en el noroeste de Gran Canaria. Conserva la tradición de la Fiesta de la Rama.",
+    "dato": "La Fiesta de la Rama se celebra cada 4 de agosto.",
+    "fuente_dato": "Ayto. Agaete",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.49986,
+     29.14553
+    ]
+   },
+   "properties": {
+    "nombre": "Haría",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo del norte de Lanzarote en un valle de palmeras. César Manrique pasó aquí sus últimos años.",
+    "dato": "Se le conoce como el valle de las mil palmeras.",
+    "fuente_dato": "Ayto. Haría",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.76535,
+     28.95678
+    ]
+   },
+   "properties": {
+    "nombre": "Yaiza",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo de casas blancas a las puertas del Parque Nacional de Timanfaya, entre La Geria y las Montañas del Fuego.",
+    "dato": "Su término incluye gran parte del Parque Nacional de Timanfaya.",
+    "fuente_dato": "Ayto. Yaiza",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -14.1076,
+     28.35039
+    ]
+   },
+   "properties": {
+    "nombre": "Pájara",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1600,
+    "hasta": 2026,
+    "descripcion": "Pueblo del oeste de Fuerteventura con la iglesia de Nuestra Señora de la Regla.",
+    "dato": "La portada de la iglesia tiene relieves de inspiración precolombina.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -14.0472,
+     28.3237
+    ]
+   },
+   "properties": {
+    "nombre": "Tuineje",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1740,
+    "hasta": 2026,
+    "descripcion": "En 1740 los majoreros derrotaron aquí a corsarios ingleses en las batallas de Tamasite y El Cuchillete.",
+    "dato": "Ambas batallas se libraron en 1740.",
+    "fuente_dato": "Ayto. Tuineje",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -14.0063,
+     28.6826
+    ]
+   },
+   "properties": {
+    "nombre": "El Cotillo",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1700,
+    "hasta": 2026,
+    "descripcion": "Pueblo pesquero del noroeste de Fuerteventura con el castillo de El Tostón, torre defensiva contra piratas.",
+    "dato": "El castillo se construyó en 1700.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.67647,
+     29.06326
+    ]
+   },
+   "properties": {
+    "nombre": "Tinajo",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del oeste de Lanzarote, entre La Geria y las Montañas del Fuego. En Mancha Blanca se venera a la Virgen de los Dolores, patrona de la isla.",
+    "dato": "Parte del Parque Nacional de Timanfaya está en su término.",
+    "fuente_dato": "Cabildo de Lanzarote",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.64502,
+     28.96108
+    ]
+   },
+   "properties": {
+    "nombre": "Tías",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del sureste de Lanzarote con un interior agrícola de viñedos y cultivos sobre picón, y un litoral turístico.",
+    "dato": "Puerto del Carmen es su principal núcleo turístico.",
+    "fuente_dato": "Cabildo de Lanzarote",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.613,
+     29.00093
+    ]
+   },
+   "properties": {
+    "nombre": "San Bartolomé",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del centro de Lanzarote, en el entorno agrícola de Mozaga.",
+    "dato": "El Monumento al Campesino, de César Manrique, se alza en Mozaga.",
+    "fuente_dato": "Cabildo de Lanzarote",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.56386,
+     29.03818
+    ]
+   },
+   "properties": {
+    "nombre": "Nazaret",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Núcleo del municipio de Teguise, próximo a Tahíche, donde está la Fundación César Manrique.",
+    "dato": "Forma parte de Teguise, antigua capital de la isla.",
+    "fuente_dato": "Cabildo de Lanzarote",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.66579,
+     28.92313
+    ]
+   },
+   "properties": {
+    "nombre": "Puerto del Carmen",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1960,
+    "hasta": 2026,
+    "descripcion": "Antiguo pueblo pesquero del sur de Lanzarote convertido en destino turístico a partir de los años 60.",
+    "dato": "Hoy es uno de los principales destinos turísticos de la isla.",
+    "fuente_dato": "Ayto. Tías",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.49911,
+     28.99838
+    ]
+   },
+   "properties": {
+    "nombre": "Costa Teguise",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1970,
+    "hasta": 2026,
+    "descripcion": "Urbanización turística del este de Lanzarote, planificada como complejo vacacional en los años 70.",
+    "dato": "Pertenece al municipio de Teguise.",
+    "fuente_dato": "Ayto. Teguise",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.82814,
+     28.86426
+    ]
+   },
+   "properties": {
+    "nombre": "Playa Blanca",
+    "isla": "Lanzarote",
+    "tipo": "Patrimonio",
+    "desde": 1960,
+    "hasta": 2026,
+    "descripcion": "Antiguo pueblo pesquero del sur de Lanzarote, hoy núcleo turístico y puerto de conexión con Fuerteventura.",
+    "dato": "Cerca están las playas de Papagayo, dentro del Monumento Natural Los Ajaches.",
+    "fuente_dato": "Ayto. Yaiza",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -14.01379,
+     28.42307
+    ]
+   },
+   "properties": {
+    "nombre": "Antigua",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1700,
+    "hasta": 2026,
+    "descripcion": "Municipio del centro de Fuerteventura, con el Molino de Antigua y un centro de artesanía.",
+    "dato": "Se fundó a finales del siglo XVIII.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.86749,
+     28.73079
+    ]
+   },
+   "properties": {
+    "nombre": "Corralejo",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1960,
+    "hasta": 2026,
+    "descripcion": "Pueblo pesquero del norte de Fuerteventura convertido en destino turístico, junto a las dunas.",
+    "dato": "Desde su puerto salen barcos a Isla de Lobos y a Lanzarote.",
+    "fuente_dato": "Ayto. La Oliva",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -14.22691,
+     28.16155
+    ]
+   },
+   "properties": {
+    "nombre": "Costa Calma",
+    "isla": "Fuerteventura",
+    "tipo": "Patrimonio",
+    "desde": 1970,
+    "hasta": 2026,
+    "descripcion": "Núcleo turístico del istmo de La Pared, puerta de entrada a la península de Jandía.",
+    "dato": "Está junto a las largas playas de Sotavento.",
+    "fuente_dato": "Cabildo de Fuerteventura",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.58285,
+     28.11106
+    ]
+   },
+   "properties": {
+    "nombre": "Moya",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo del norte de Gran Canaria, en la zona que ocupaba el antiguo Monteverde de Doramas, de laurisilva.",
+    "dato": "Allí nació el poeta Tomás Morales, en 1884.",
+    "fuente_dato": "Ayto. Moya",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.72538,
+     27.88385
+    ]
+   },
+   "properties": {
+    "nombre": "Mogán",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del suroeste de Gran Canaria con valles agrícolas y el Puerto de Mogán, antiguo barrio de pescadores.",
+    "dato": "Su clima es de los más cálidos y soleados de la isla.",
+    "fuente_dato": "Ayto. Mogán",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.56299,
+     28.10711
+    ]
+   },
+   "properties": {
+    "nombre": "Firgas",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Villa del norte de Gran Canaria famosa por su agua mineral y por el Paseo de Gran Canaria.",
+    "dato": "El paseo central tiene una cascada y los escudos de los municipios de la isla en azulejos.",
+    "fuente_dato": "Ayto. Firgas",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.49725,
+     27.98562
+    ]
+   },
+   "properties": {
+    "nombre": "Valsequillo",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio de medianías del este de Gran Canaria, entre barrancos y cultivos de frutales.",
+    "dato": "Está entre Telde y la cumbre de la isla.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.54071,
+     27.91174
+    ]
+   },
+   "properties": {
+    "nombre": "Santa Lucía de Tirajana",
+    "isla": "Gran Canaria",
+    "tipo": "Yacimiento",
+    "desde": 1483,
+    "hasta": 2026,
+    "descripcion": "Municipio del sureste con la Fortaleza Grande, en Ansite, y el Museo Castillo de la Fortaleza.",
+    "dato": "Ansite fue el último reducto aborigen en la conquista de Gran Canaria (1483).",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.43433,
+     27.91855
+    ]
+   },
+   "properties": {
+    "nombre": "Ingenio",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del este de Gran Canaria con una larga tradición de artesanía textil y cerámica.",
+    "dato": "Es famoso por los calados, bordados de tradición centenaria.",
+    "fuente_dato": "Ayto. Ingenio",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.50425,
+     28.03197
+    ]
+   },
+   "properties": {
+    "nombre": "Santa Brígida",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio de medianías junto a la Caldera de Bandama, con viñedos y casas tradicionales.",
+    "dato": "Allí está el club de golf más antiguo de España, fundado en 1891.",
+    "fuente_dato": "Real Club de Golf de Las Palmas",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.5333,
+     28.00892
+    ]
+   },
+   "properties": {
+    "nombre": "Vega de San Mateo",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio de cumbre con tradición agrícola y ganadera. Su mercado es uno de los más conocidos de la isla.",
+    "dato": "Alberga la Casa Museo Cho Zacarías.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.57623,
+     28.0433
+    ]
+   },
+   "properties": {
+    "nombre": "Valleseco",
+    "isla": "Gran Canaria",
+    "tipo": "Naturaleza",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio de cumbres húmedas del centro-norte, con restos de laurisilva y paisaje agrícola de medianías.",
+    "dato": "Es uno de los pueblos más verdes de la isla.",
+    "fuente_dato": "Cabildo de Gran Canaria",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.78126,
+     27.9891
+    ]
+   },
+   "properties": {
+    "nombre": "La Aldea de San Nicolás",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo del oeste de Gran Canaria, aislado entre montañas y mar, con una fuerte tradición agrícola.",
+    "dato": "Cada septiembre se celebra la Fiesta del Charco.",
+    "fuente_dato": "Ayto. San Nicolás de Tolentino",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.57329,
+     27.92481
+    ]
+   },
+   "properties": {
+    "nombre": "San Bartolomé de Tirajana",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del sur de Gran Canaria que va de las cumbres a la costa, con pueblos de montaña como Fataga.",
+    "dato": "Su término incluye Maspalomas y Playa del Inglés.",
+    "fuente_dato": "Ayto. San Bartolomé de Tirajana",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.71045,
+     27.78943
+    ]
+   },
+   "properties": {
+    "nombre": "Puerto Rico",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1970,
+    "hasta": 2026,
+    "descripcion": "Núcleo turístico del suroeste de Gran Canaria, en el municipio de Mogán, desarrollado en torno a una bahía.",
+    "dato": "Se desarrolló a partir de los años 70.",
+    "fuente_dato": "Ayto. Mogán",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -15.5787,
+     27.7567
+    ]
+   },
+   "properties": {
+    "nombre": "Playa del Inglés",
+    "isla": "Gran Canaria",
+    "tipo": "Patrimonio",
+    "desde": 1960,
+    "hasta": 2026,
+    "descripcion": "Núcleo turístico del sur de Gran Canaria, desarrollado desde los años 60 junto a las dunas de Maspalomas.",
+    "dato": "Está junto a la Reserva Natural Especial de las Dunas de Maspalomas.",
+    "fuente_dato": "Ayto. San Bartolomé de Tirajana",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.34074,
+     28.52236
+    ]
+   },
+   "properties": {
+    "nombre": "Tegueste",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Villa agrícola del noreste de Tenerife, junto al macizo de Anaga, con tradición de romerías.",
+    "dato": "La Romería de San Marcos se celebra en abril.",
+    "fuente_dato": "Ayto. Tegueste",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.81552,
+     28.3661
+    ]
+   },
+   "properties": {
+    "nombre": "Los Silos",
+    "isla": "Tenerife",
+    "tipo": "Naturaleza",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pueblo del noroeste de Tenerife, junto al macizo de Teno, con casco tradicional y acceso a la laurisilva.",
+    "dato": "En su término está el Monte del Agua, bosque de laurisilva.",
+    "fuente_dato": "Ayto. Los Silos",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.77947,
+     28.21154
+    ]
+   },
+   "properties": {
+    "nombre": "Guía de Isora",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del oeste de Tenerife, con medianías agrícolas y una costa que mira a La Gomera.",
+    "dato": "Entre sus núcleos costeros están Playa San Juan y Alcalá.",
+    "fuente_dato": "Ayto. Guía de Isora",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.68102,
+     28.09962
+    ]
+   },
+   "properties": {
+    "nombre": "Arona (Los Cristianos)",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del sur de Tenerife. Su núcleo costero de Los Cristianos fue pueblo de pescadores y hoy es puerto de enlace con otras islas.",
+    "dato": "Desde Los Cristianos salen barcos a La Gomera, La Palma y El Hierro.",
+    "fuente_dato": "Ayto. Arona",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.43886,
+     28.23638
+    ]
+   },
+   "properties": {
+    "nombre": "Fasnia",
+    "isla": "Tenerife",
+    "tipo": "Volcán",
+    "desde": 1705,
+    "hasta": 2026,
+    "descripcion": "Municipio del sureste de Tenerife, escenario de una de las erupciones históricas de la isla.",
+    "dato": "En enero de 1705 entró en erupción el volcán de Fasnia.",
+    "fuente_dato": "IGN / Ayto. Fasnia",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.42244,
+     28.33971
+    ]
+   },
+   "properties": {
+    "nombre": "Arafo",
+    "isla": "Tenerife",
+    "tipo": "Volcán",
+    "desde": 1705,
+    "hasta": 2026,
+    "descripcion": "Pueblo del valle de Güímar, escenario de una de las erupciones de 1705.",
+    "dato": "El volcán de Arafo estuvo activo entre febrero y marzo de 1705.",
+    "fuente_dato": "IGN / Ayto. Arafo",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.77986,
+     28.35584
+    ]
+   },
+   "properties": {
+    "nombre": "Tanque",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Pequeño municipio de las medianías del noroeste de Tenerife, junto a Garachico.",
+    "dato": "Es uno de los municipios con menor población de la isla.",
+    "fuente_dato": "Ayto. El Tanque",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.46232,
+     28.43231
+    ]
+   },
+   "properties": {
+    "nombre": "La Victoria de Acentejo",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1495,
+    "hasta": 2026,
+    "descripcion": "Escenario de la segunda batalla de Acentejo, en 1495, en la que las tropas de Lugo vencieron a los guanches.",
+    "dato": "Su victoria fue decisiva para completar la conquista de Tenerife en 1496.",
+    "fuente_dato": "Ayto. La Victoria de Acentejo",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.4472,
+     28.45242
+    ]
+   },
+   "properties": {
+    "nombre": "La Matanza de Acentejo",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1494,
+    "hasta": 2026,
+    "descripcion": "Escenario de la primera batalla de Acentejo, a finales de 1494, en la que los guanches derrotaron a las tropas castellanas.",
+    "dato": "El topónimo recuerda la matanza de las tropas de Lugo.",
+    "fuente_dato": "Ayto. La Matanza de Acentejo",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.65158,
+     28.3732
+    ]
+   },
+   "properties": {
+    "nombre": "La Guancha",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Villa del norte de Tenerife, entre Icod y San Juan de la Rambla, con medianías agrícolas y bosques de pinos.",
+    "dato": "Su nombre hace referencia a los guanches, los antiguos pobladores de la isla.",
+    "fuente_dato": "Ayto. La Guancha",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.57599,
+     28.11882
+    ]
+   },
+   "properties": {
+    "nombre": "Granadilla de Abona",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del sur de Tenerife que se extiende de la cumbre a la costa.",
+    "dato": "En su término están El Médano, Montaña Roja y el aeropuerto Tenerife Sur.",
+    "fuente_dato": "Ayto. Granadilla de Abona",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.61708,
+     28.09826
+    ]
+   },
+   "properties": {
+    "nombre": "San Miguel de Abona",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio de medianías del sur de Tenerife, con tradición agrícola entre Arona y Granadilla.",
+    "dato": "Forma parte de la comarca de Abona.",
+    "fuente_dato": "Ayto. San Miguel de Abona",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.48876,
+     28.42613
+    ]
+   },
+   "properties": {
+    "nombre": "Santa Úrsula",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del norte de Tenerife, entre La Victoria y La Orotava, con viñedos de medianías.",
+    "dato": "Forma parte de la zona de la Denominación de Origen Tacoronte-Acentejo.",
+    "fuente_dato": "Ayto. Santa Úrsula",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.41667,
+     28.46667
+    ]
+   },
+   "properties": {
+    "nombre": "El Sauzal",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio vitivinícola del norte de Tenerife, con viñedos en pequeñas parcelas de ladera.",
+    "dato": "Allí está la Casa del Vino La Baranda.",
+    "fuente_dato": "Ayto. El Sauzal",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.65015,
+     28.39276
+    ]
+   },
+   "properties": {
+    "nombre": "San Juan de la Rambla",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del norte de Tenerife, entre La Guancha y Los Realejos, con costa de piscinas naturales.",
+    "dato": "El Charco de la Laja es una de sus piscinas naturales más conocidas.",
+    "fuente_dato": "Ayto. San Juan de la Rambla",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -16.58275,
+     28.38487
+    ]
+   },
+   "properties": {
+    "nombre": "Los Realejos",
+    "isla": "Tenerife",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del valle de La Orotava, en la antigua zona del menceyato de Taoro.",
+    "dato": "Está dividido en dos núcleos históricos: Realejo Alto y Realejo Bajo.",
+    "fuente_dato": "Ayto. Los Realejos",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.24073,
+     28.06205
+    ]
+   },
+   "properties": {
+    "nombre": "Alajeró",
+    "isla": "La Gomera",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del sur de La Gomera, con barrancos y terrazas agrícolas que bajan hacia Playa de Santiago.",
+    "dato": "En su término está el aeropuerto de La Gomera.",
+    "fuente_dato": "Cabildo de La Gomera",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.78333,
+     28.65
+    ]
+   },
+   "properties": {
+    "nombre": "Breña Alta",
+    "isla": "La Palma",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del este de La Palma, entre Santa Cruz y la Caldera de Taburiente, con tradición agrícola.",
+    "dato": "La Palma es conocida por sus puros artesanales.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.78953,
+     28.63011
+    ]
+   },
+   "properties": {
+    "nombre": "Breña Baja",
+    "isla": "La Palma",
+    "tipo": "Patrimonio",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio costero del este de La Palma.",
+    "dato": "Los Cancajos es una de las zonas de baño más conocidas de la isla.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.73333,
+     28.73333
+    ]
+   },
+   "properties": {
+    "nombre": "Puntallana",
+    "isla": "La Palma",
+    "tipo": "Naturaleza",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del noreste de La Palma, entre Santa Cruz y San Andrés y Sauces, con barrancos y plataneras.",
+    "dato": "En su término está el bosque de laurisilva de La Galga.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.95,
+     28.7
+    ]
+   },
+   "properties": {
+    "nombre": "Tijarafe",
+    "isla": "La Palma",
+    "tipo": "Naturaleza",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del oeste de La Palma, con barrancos y miradores sobre el valle de Aridane y el océano.",
+    "dato": "Su costa cae en acantilados hacia el Atlántico.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.97741,
+     28.7749
+    ]
+   },
+   "properties": {
+    "nombre": "Puntagorda",
+    "isla": "La Palma",
+    "tipo": "Naturaleza",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del noroeste de La Palma, conocido por sus campos de almendros.",
+    "dato": "Sus almendros florecen a principios de año.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -17.80377,
+     28.82708
+    ]
+   },
+   "properties": {
+    "nombre": "Barlovento",
+    "isla": "La Palma",
+    "tipo": "Naturaleza",
+    "desde": 1500,
+    "hasta": 2026,
+    "descripcion": "Municipio del noreste de La Palma con piscinas naturales como La Fajana y la laguna de Barlovento.",
+    "dato": "Está en la zona de laurisilva del norte de la isla.",
+    "fuente_dato": "Cabildo de La Palma",
+    "fuente_coordenada": "GeoNames (casco urbano)",
+    "datos_verificados": false
+   }
+  }
+ ]
+}

@@ -1,0 +1,19 @@
+# Licencia de los datos
+
+Los datos de este proyecto (`pois.geojson` y `FUENTES.csv`) se publican bajo la licencia
+**Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**.
+
+- Resumen: https://creativecommons.org/licenses/by/4.0/deed.es
+- Texto legal completo: https://creativecommons.org/licenses/by/4.0/legalcode.es
+
+Puedes copiar, redistribuir y adaptar los datos, incluso con fines comerciales, siempre que
+des el crédito adecuado, indiques si has hecho cambios y enlaces a la licencia.
+
+**Atribución sugerida:** «Javier García, Gemelo digital de Canarias, https://github.com/hellojaviergarcia»
+
+## Aviso sobre las fuentes
+
+Las coordenadas proceden de fuentes de terceros (GeoNames, Wikipedia, UNESCO, IAC, INVOLCAN,
+Cabildo de Gran Canaria, Ayuntamiento de Tinajo, Sygic y otras), cada una con sus propias
+condiciones. Esta licencia solo cubre la selección, organización y textos propios del proyecto.
+Las fuentes de cada coordenada se indican en `FUENTES.csv`.
