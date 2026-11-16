@@ -159,4 +159,3 @@ Las coordenadas proceden de las fuentes indicadas, cada una con sus propias cond
 - GitHub: [@hellojaviergarcia](https://github.com/hellojaviergarcia)
 - LinkedIn: [hellojaviergarcia](https://www.linkedin.com/in/hellojaviergarcia/)
 
-El proyecto se ha desarrollado con ayuda de IA (Claude, de Anthropic) para el código y la maquetación. La selección de contenidos y su revisión son responsabilidad del autor.
