@@ -2552,6 +2552,138 @@
     "fuente_coordenada": "GeoNames (casco urbano)",
     "datos_verificados": false
    }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.50306,
+     29.23083
+    ]
+   },
+   "properties": {
+    "nombre": "Caleta de Sebo",
+    "isla": "La Graciosa",
+    "tipo": "Patrimonio",
+    "desde": 1945,
+    "hasta": 2026,
+    "descripcion": "Capital de La Graciosa y único puerto de entrada a la isla, con ferris regulares desde Órzola (unos 25 minutos). Sus calles son de arena y apenas circulan vehículos.",
+    "dato": "Tiene unos 730 habitantes (INE, 2018) y su iglesia del Carmen es de 1945.",
+    "fuente_dato": "Wikipedia / Ayto. Teguise",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.48,
+     29.26139
+    ]
+   },
+   "properties": {
+    "nombre": "Casas de Pedro Barba",
+    "isla": "La Graciosa",
+    "tipo": "Patrimonio",
+    "desde": 1945,
+    "hasta": 2026,
+    "descripcion": "Pequeña comunidad de casas de verano en el noreste de La Graciosa, unida a Caleta de Sebo por una pista de tierra.",
+    "dato": "En 2018 tenía 3 habitantes empadronados (INE).",
+    "fuente_dato": "Wikipedia / INE",
+    "fuente_coordenada": "Wikipedia",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.53847,
+     29.22272
+    ]
+   },
+   "properties": {
+    "nombre": "Montaña Amarilla",
+    "isla": "La Graciosa",
+    "tipo": "Volcán",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Cono volcánico de tonos ocres y amarillos en el extremo suroeste de La Graciosa, con vistas a la costa norte y al risco de Famara.",
+    "dato": "Mide unos 175 m y el IGN mantiene un vértice geodésico en su cima.",
+    "fuente_dato": "IGN (red geodésica)",
+    "fuente_coordenada": "IGN (vértice geodésico)",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.50601,
+     29.25119
+    ]
+   },
+   "properties": {
+    "nombre": "Agujas Grandes",
+    "isla": "La Graciosa",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Cumbre del macizo volcánico de Pedro Barba, con las mejores vistas del sur de la isla y de la costa de Lanzarote.",
+    "dato": "266 m: es el punto más alto de La Graciosa.",
+    "fuente_dato": "Wikipedia",
+    "fuente_coordenada": "SummitPost",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.51554,
+     29.27655
+    ]
+   },
+   "properties": {
+    "nombre": "Playa de las Conchas",
+    "isla": "La Graciosa",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Playa virgen en el noroeste de La Graciosa, al pie de la Montaña Bermeja y a unos 6 km de Caleta de Sebo.",
+    "dato": "Mide unos 600 m de largo; con frecuencia hay fuerte oleaje y corrientes.",
+    "fuente_dato": "Turismo de Teguise / RTVC",
+    "fuente_coordenada": "OpenStreetMap",
+    "datos_verificados": false
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -13.5282,
+     29.2202
+    ]
+   },
+   "properties": {
+    "nombre": "Playa de la Francesa",
+    "isla": "La Graciosa",
+    "tipo": "Naturaleza",
+    "desde": 1400,
+    "hasta": 2026,
+    "descripcion": "Playa de arena blanca en el sur de La Graciosa, a unos 2 km de Caleta de Sebo, con vistas al risco de Famara.",
+    "dato": "Cuando sube la marea se inunda y forma una laguna.",
+    "fuente_dato": "Turismo de Teguise",
+    "fuente_coordenada": "Wikivoyage / mondo.surf (aprox.)",
+    "datos_verificados": false
+   }
   }
  ]
 }
